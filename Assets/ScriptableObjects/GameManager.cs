@@ -21,6 +21,14 @@ public class GameManager : ScriptableObject {
 
     public GameState CurrentState { get { return currentState; } }
 
+    public GameEvent startRoundEvent;
+
+    public void StartGame()
+    {
+        SetState(GameState.RoundActive);
+        startRoundEvent.Raise();
+    }
+
     public void SetState(GameState nextState)
     {
         currentState = nextState;
