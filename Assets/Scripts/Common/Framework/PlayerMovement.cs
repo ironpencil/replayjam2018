@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public PhysicsMaterial2D noFrictionMaterial;
 
     private float stunTime;
+    private float invulnTime;
+    public StunConfig stun;
+    public bool isInvulnerable;
+
     public int facing = 1;
     private int jumpCount = 0;
     private bool beginJump = false;
@@ -82,11 +86,53 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isInvulnerable && Time.time > invulnTime)
+        {
+            isInvulnerable = false;
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        }
+        if (state == State.stunned)
+        {
+            if (Time.time > stunTime)
+            {
+                UnStun();
+            }
+        } else {
+            HandleMovementInput();
+        }
+    }
+
+    public void Stun(Vector2 direction)
+    {
+        stunTime = Time.time + stun.duration;
+        invulnTime = Time.time + stun.invulnerabilityDuration;
+        isInvulnerable = true;
+        state = State.stunned;
+        float velocityX = rigidBody.velocity.x;
+        float velocityY = rigidBody.velocity.y;
+        
+        if (rigidBody.velocity.y > 0) {
+            velocityY = 0;
+        }
+        if (rigidBody.velocity.x > 0 && direction.x < 0) {
+            velocityX = 0;
+        } else if (rigidBody.velocity.x < 0 && direction.x > 0) {
+            velocityX = 0;
+        }
+        rigidBody.velocity = new Vector2(velocityX, velocityY);
+        rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+    }
+
+    public void UnStun() {
+        state = State.still;
+        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+    }
+
+    private void HandleMovementInput()
+    {
         float directionX = rwPlayer.GetAxis("Horizontal");
-
-        float desiredVelocityX = 0.0f;
-
-        desiredVelocityX = movementConfigs.speed * directionX;
+        float desiredVelocityX = movementConfigs.speed * directionX;
 
         float velocityX = Mathf.Lerp(rigidBody.velocity.x, desiredVelocityX, Time.fixedDeltaTime * 10);
         float velocityY = rigidBody.velocity.y;
@@ -157,6 +203,11 @@ public class PlayerMovement : MonoBehaviour
 
         //if their jump was stopped (due to colliding with something)
         if ((rigidBody.velocity.y <= 0) && !beginJump)
+        {
+            return false;
+        }
+
+        if (state == State.stunned)
         {
             return false;
         }

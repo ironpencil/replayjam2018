@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
 	public AttackBehavior attackBehavior;
     public bool isAttacking;
     public float completeTime;
+    public float recoveryTime;
     private Player rwPlayer;
     private PlayerData player;
 	private PlayerMovement playerMovement;
@@ -26,12 +27,14 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttacking && completeTime <= Time.time)
+        if (isAttacking && completeTime <= Time.time || playerMovement.state == PlayerMovement.State.stunned)
         {
             StopAttack();
         }
 
-        if (!isAttacking && rwPlayer.GetButtonDown("Fire"))
+        if (!isAttacking && rwPlayer.GetButtonDown("Fire") 
+        && playerMovement.state != PlayerMovement.State.stunned
+        && Time.time > recoveryTime)
         {
             StartAttack();
         }
@@ -44,6 +47,7 @@ public class PlayerAttack : MonoBehaviour
 		attackBehavior.StartAttack(attackAngle);
 		UpdateAttackAngle(attackAngle);
 		completeTime = Time.time + attackConfig.duration;
+        recoveryTime = Time.time + attackConfig.duration + attackConfig.recovery;
         isAttacking = true;
     }
 
