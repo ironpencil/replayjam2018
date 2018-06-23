@@ -12,13 +12,12 @@ public class PlayerAttack : MonoBehaviour
     public float completeTime;
     private Player rwPlayer;
     private PlayerData player;
-	private PlayerMovement playerMovement;
+    public IntVariable playerFacing;
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<PlayerData>();
-		playerMovement = GetComponent<PlayerMovement>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
 		attackObject.SetActive(false);
     }
@@ -59,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
 		float x = rwPlayer.GetAxis("Horizontal");
 		float y = rwPlayer.GetAxis("Vertical");
 		if (x == 0f) {
-			x = playerMovement.facing;
+			x = playerFacing.Value;
 		}
 		return new Vector2(x, y);
 	}
