@@ -55,22 +55,19 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Transform groundCheck in groundChecks)
         {
-            // Sean commented this out... maybe if we don't want the ground to be on another layer, we don't
-            // need to do the layermask stuff? Unsure... testing. 
-            // 
-            // DO NOT REMOVE THE COMMENTED OUT LINE OF CODE
-            //
             if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
             {
                 grounded = true;
+                jumpCount = 0;
                 break;
             }
         }
 
         // If the jump button is pressed and the player is grounded then the player should jump.
-        if (rwPlayer.GetButtonDown("Jump") && grounded)
+        if (rwPlayer.GetButtonDown("Jump") && jumpCount < maxJumps)
         {
             beginJump = true;
+            jumpCount++;
         }
 
         if (grounded && !beginJump && !jumping)
@@ -105,7 +102,9 @@ public class PlayerMovement : MonoBehaviour
             jumping = true;
             currentJumpForce = holdJumpForce;
 
-            velocityY += initialJumpForce;
+            // Wanted double jump to feel like we're jumping off of the ground again.
+            //velocityY += initialJumpForce;
+            velocityY = initialJumpForce;
 
             col.sharedMaterial = noFrictionMaterial;
 
