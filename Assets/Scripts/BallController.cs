@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour {
-
     public BallConfig ballConfig;
-
+    public BallColor color;
     public float currentSpeed = 0.0f;
 
     private Rigidbody2D rb;
@@ -28,7 +27,7 @@ public class BallController : MonoBehaviour {
         }
 	}
 
-    public void Hit(Vector2 direction)
+    public void Hit(int playerId, Vector2 direction)
     {
         rb.velocity = Vector2.zero;
 
@@ -51,7 +50,7 @@ public class BallController : MonoBehaviour {
         direction.x = Random.Range(-1.0f, 1.0f);
         direction.y = Random.Range(-1.0f, 1.0f);
 
-        Hit(direction);
+        Hit(0, direction);
     }
 
     [ContextMenu("Stop")]

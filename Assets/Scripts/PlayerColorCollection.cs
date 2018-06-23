@@ -5,7 +5,6 @@ using UnityEngine;
 
 [Serializable]
 public class PlayerColorCollection {
-
     public int playerNumber = 0;
     public List<BallColor> ballColors = new List<BallColor>();
 }
