@@ -12,13 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private Player rwPlayer;
 
     private Rigidbody2D rb;
-    public float speed;
     public Transform[] groundChecks;
-    public float initialJumpForce;
-    public float holdJumpForce;
-    public float maxJumpTime;
-    public float jumpDecay;
-    private int maxJumps = 2;
+    public MovementConfig movementConfigs;
 
     public PhysicsMaterial2D noFrictionMaterial;
 
@@ -64,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // If the jump button is pressed and the player is grounded then the player should jump.
-        if (rwPlayer.GetButtonDown("Jump") && jumpCount < maxJumps)
+        if (rwPlayer.GetButtonDown("Jump") && jumpCount < movementConfigs.maxJumps)
         {
             beginJump = true;
             jumpCount++;
@@ -91,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         float desiredVelocityX = 0.0f;
 
-        desiredVelocityX = speed * directionX;
+        desiredVelocityX = movementConfigs.speed * directionX;
 
         float velocityX = Mathf.Lerp(rb.velocity.x, desiredVelocityX, Time.fixedDeltaTime * 10);
         float velocityY = rb.velocity.y;
@@ -100,11 +95,11 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpTime = Time.time;
             jumping = true;
-            currentJumpForce = holdJumpForce;
+            currentJumpForce = movementConfigs.holdJumpForce;
 
             // Wanted double jump to feel like we're jumping off of the ground again.
             //velocityY += initialJumpForce;
-            velocityY = initialJumpForce;
+            velocityY = movementConfigs.initialJumpForce;
 
             col.sharedMaterial = noFrictionMaterial;
 
@@ -119,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
             if (CanAddJumpForce(jumpDuration) && currentJumpForce > 0.0f)
             {
                 velocityY += currentJumpForce;
-                currentJumpForce = currentJumpForce - (Time.fixedDeltaTime * rb.gravityScale * rb.mass * jumpDecay);
+                currentJumpForce = currentJumpForce - (Time.fixedDeltaTime * rb.gravityScale * rb.mass * movementConfigs.jumpDecay);
             }
             else
             {
@@ -144,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //if they are at max air time, stop jumping
-        if (jumpDuration > maxJumpTime)
+        if (jumpDuration > movementConfigs.maxJumpTime)
         {
             return false;
         }
