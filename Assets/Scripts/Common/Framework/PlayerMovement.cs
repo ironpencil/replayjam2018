@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PhysicsMaterial2D noFrictionMaterial;
 
+    private float stunTime;
     public int facing = 1;
     private int jumpCount = 0;
     private bool beginJump = false;
@@ -24,12 +25,15 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded = false;
     private PhysicsMaterial2D originalMaterial;
     private Collider2D col;
-
-    private enum State
+    
+    public State state;
+    public enum State
     {
         moving,
         still,
-        jumping
+        jumping,
+        falling,
+        stunned
     }
 
     void Start()
@@ -38,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         player = GetComponent<PlayerData>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
+        state = State.still;
     }
 
     void Update()
@@ -77,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float directionY = rwPlayer.GetAxis("Vertical");
         float directionX = rwPlayer.GetAxis("Horizontal");
 
         float desiredVelocityX = 0.0f;
@@ -89,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (beginJump)
         {
+            state = State.jumping;
             jumpTime = Time.time;
             jumping = true;
             currentJumpForce = movementConfigs.holdJumpForce;
@@ -116,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumping = false;
                 currentJumpForce = 0.0f;
+                state = State.falling;
             }
         }
 
@@ -124,9 +130,15 @@ public class PlayerMovement : MonoBehaviour
         if (velocityX < 0) facing = -1;
         if (velocityX > 0) facing = 1;
 
-        rigidBody.velocity = new Vector2(velocityX, velocityY);
+        if (grounded) {
+            if (velocityX == 0) {
+                state = State.still;
+            } else {
+                state = State.moving;
+            }
+        }
 
-        //Debug.Log("Velocity = " + rb.velocity.ToString());
+        rigidBody.velocity = new Vector2(velocityX, velocityY);
     }
 
     private bool CanAddJumpForce(float jumpDuration)
@@ -151,44 +163,4 @@ public class PlayerMovement : MonoBehaviour
 
         return true;
     }
-
-    // Leaving this here just to see what i was doing before
-    // this can be removed after a commit
-    // void Move()
-    // {
-    //     float x = 0;
-
-    //     if (rb.velocity.x == 0 && rb.velocity.y == 0)
-    //     {
-    //         state = State.still;
-    //     }
-    //     else if (rb.velocity.y != 0)
-    //     {
-    //         state = State.jumping;
-    //     }
-    //     else
-    //     {
-    //         state = State.moving;
-    //     }
-
-    //     x = rwPlayer.GetAxis("Horizontal") * speed;
-
-    //     if (state != State.jumping)
-    //     {
-    //         if (rwPlayer.GetButtonDown("Jump"))
-    //         {
-    //             // These vars were public floats ealier
-    //             float horizontalJumpBoost = 0;
-    //             float jump = 0;
-    //             ///////////////////
-
-    //             float hjump = horizontalJumpBoost * rwPlayer.GetAxis("Horizontal");
-    //             rb.AddForce(new Vector2(hjump, jump), ForceMode2D.Impulse);
-    //             state = State.jumping;
-    //         }
-    //     }
-
-    //     //Debug.Log(String.Format("x: {0}, y: {1}", x, y));
-    //     rb.AddForce(new Vector2(x, 0));
-    // }
 }

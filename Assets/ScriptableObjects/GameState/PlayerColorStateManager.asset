@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerColors:
   - playerNumber: 0
-    ballColors:
-    - {fileID: 0}
-  - playerNumber: 1
     ballColors: []
+  - playerNumber: 1
+    ballColors:
+    - {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
   TEST_ONLY_PLAYER: 0
   TEST_ONLY_BALL: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
