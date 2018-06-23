@@ -8,20 +8,21 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackObject;
     public AttackConfig attackConfig;
 	public AttackBehavior attackBehavior;
+    private PlayerMovement playerMovement;
     public bool isAttacking;
     public float completeTime;
     public float recoveryTime;
     private Player rwPlayer;
     private PlayerData player;
-	private PlayerMovement playerMovement;
+    public IntVariable playerFacing;
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<PlayerData>();
-		playerMovement = GetComponent<PlayerMovement>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
 		attackObject.SetActive(false);
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             StopAttack();
         }
 
-        if (!isAttacking && rwPlayer.GetButtonDown("Fire") 
+        if (!isAttacking && rwPlayer.GetButtonDown("Attack") 
         && playerMovement.state != PlayerMovement.State.stunned
         && Time.time > recoveryTime)
         {
@@ -63,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
 		float x = rwPlayer.GetAxis("Horizontal");
 		float y = rwPlayer.GetAxis("Vertical");
 		if (x == 0f) {
-			x = playerMovement.facing;
+			x = playerFacing.Value;
 		}
 		return new Vector2(x, y);
 	}
