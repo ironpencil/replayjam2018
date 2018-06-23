@@ -40,7 +40,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1793103690462872
 GameObject:
   m_ObjectHideFlags: 1
@@ -170,7 +170,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780572163983616}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.77646637, w: 0.6301587}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833882751644026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.36, y: -3.44, z: -0.022617942}
+  m_LocalPosition: {x: -0.276369, y: -4.260001, z: -0.022617942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4119506138192308}
@@ -251,7 +251,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -320,9 +320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd2ed30c48c8cb42b8f35050338b341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAngle: {x: 0, y: 0}
+  attackAngle: {x: -0.21030177, y: -1}
   hitCount: 0
   hitList: []
+  playerData: {fileID: 114803667511523826}
 --- !u!114 &114744758144740128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,7 +339,7 @@ MonoBehaviour:
   attackConfig: {fileID: 11400000, guid: 68abf493adc7eb04aae841bd42e5fa88, type: 2}
   attackBehavior: {fileID: 114675318679245288}
   isAttacking: 0
-  completeTime: 0
+  completeTime: 14.154269
 --- !u!114 &114803667511523826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  colorState: {fileID: 0}
 --- !u!212 &212377511401763090
 SpriteRenderer:
   m_ObjectHideFlags: 1

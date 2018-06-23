@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerColors:
   - playerNumber: 0
-    ballColors: []
+    ballColors:
+    - {fileID: 0}
   - playerNumber: 1
     ballColors: []
   TEST_ONLY_PLAYER: 0
