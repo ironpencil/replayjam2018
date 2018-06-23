@@ -8,7 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0fec48a2f5c3545910bec4a0faaf6c, type: 3}
-  m_Name: PlayerStunDuration
+  m_Script: {fileID: 11500000, guid: 5adfdaf06a7ab4741b9ea3fe4925200a, type: 3}
+  m_Name: StunConfig
   m_EditorClassIdentifier: 
-  Value: 0
+  duration: 0.75
+  strength: 15
+  invulnerabilityDuration: 1.5
