@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player rwPlayer;
     private PlayerData player;
+    
 
     private Rigidbody2D rigidBody;
     public Transform[] groundChecks;
@@ -15,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PhysicsMaterial2D noFrictionMaterial;
 
+    public IntVariable facing;
     private float stunTime;
-    public int facing = 1;
     private int jumpCount = 0;
     private bool beginJump = false;
     private bool jumping = false;
@@ -127,8 +128,8 @@ public class PlayerMovement : MonoBehaviour
 
         beginJump = false;
 
-        if (velocityX < 0) facing = -1;
-        if (velocityX > 0) facing = 1;
+        if (velocityX < 0) facing.Value = -1;
+        if (velocityX > 0) facing.Value = 1;
 
         if (grounded) {
             if (velocityX == 0) {
