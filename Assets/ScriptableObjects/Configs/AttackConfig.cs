@@ -6,4 +6,5 @@ using UnityEngine;
 public class AttackConfig : ScriptableObject {
 	public float duration;
     public float strength;
+    public float recovery;
 }
