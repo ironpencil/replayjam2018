@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
             StopAttack();
         }
 
-        if (!isAttacking && rwPlayer.GetButtonDown("Fire"))
+        if (!isAttacking && rwPlayer.GetButtonDown("Attack"))
         {
             StartAttack();
         }
