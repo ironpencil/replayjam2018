@@ -47,6 +47,11 @@ public class PlayerColorState : ScriptableObject {
 
         if (!player.ballColors.Contains(ballColor))
         {
+            int ownerId = GetBallOwner(ballColor);
+            if (ownerId >= 0)
+            {
+                RemoveBallColor(ownerId, ballColor);
+            }
             player.ballColors.Add(ballColor);
         }
     }
@@ -65,6 +70,16 @@ public class PlayerColorState : ScriptableObject {
         {
             player.ballColors.Remove(ballColor);
         }
+    }
+
+    public int GetBallOwner(BallColor ballColor)
+    {
+        int playerNumber = -1;
+        foreach (PlayerColorCollection pc in playerColors)
+        {
+            if (pc.ballColors.Contains(ballColor)) return pc.playerNumber;
+        }
+        return playerNumber;
     }
 
     public void ClearBallColors(int playerNum)
