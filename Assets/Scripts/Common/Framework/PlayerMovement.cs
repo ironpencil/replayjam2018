@@ -6,17 +6,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    public int playerId;
-    [SerializeField]
     private Player rwPlayer;
+    private PlayerData player;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rigidBody;
     public Transform[] groundChecks;
     public MovementConfig movementConfigs;
 
     public PhysicsMaterial2D noFrictionMaterial;
 
+    public int facing = 1;
     private int jumpCount = 0;
     private bool beginJump = false;
     private bool jumping = false;
@@ -35,13 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
-    }
-
-    void Awake()
-    {
-        rwPlayer = ReInput.players.GetPlayer(playerId);
+        player = GetComponent<PlayerData>();
+        rwPlayer = ReInput.players.GetPlayer(player.playerId);
     }
 
     void Update()
@@ -88,8 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
         desiredVelocityX = movementConfigs.speed * directionX;
 
-        float velocityX = Mathf.Lerp(rb.velocity.x, desiredVelocityX, Time.fixedDeltaTime * 10);
-        float velocityY = rb.velocity.y;
+        float velocityX = Mathf.Lerp(rigidBody.velocity.x, desiredVelocityX, Time.fixedDeltaTime * 10);
+        float velocityY = rigidBody.velocity.y;
 
         if (beginJump)
         {
@@ -114,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
             if (CanAddJumpForce(jumpDuration) && currentJumpForce > 0.0f)
             {
                 velocityY += currentJumpForce;
-                currentJumpForce = currentJumpForce - (Time.fixedDeltaTime * rb.gravityScale * rb.mass * movementConfigs.jumpDecay);
+                currentJumpForce = currentJumpForce - (Time.fixedDeltaTime * rigidBody.gravityScale * rigidBody.mass * movementConfigs.jumpDecay);
             }
             else
             {
@@ -125,7 +121,10 @@ public class PlayerMovement : MonoBehaviour
 
         beginJump = false;
 
-        rb.velocity = new Vector2(velocityX, velocityY);
+        if (velocityX < 0) facing = -1;
+        if (velocityX > 0) facing = 1;
+
+        rigidBody.velocity = new Vector2(velocityX, velocityY);
 
         //Debug.Log("Velocity = " + rb.velocity.ToString());
     }
@@ -145,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //if their jump was stopped (due to colliding with something)
-        if ((rb.velocity.y <= 0) && !beginJump)
+        if ((rigidBody.velocity.y <= 0) && !beginJump)
         {
             return false;
         }
