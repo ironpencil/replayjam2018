@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4731752215805564}
   - component: {fileID: 212012587219738924}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 58762481225054444}
   - component: {fileID: 50000984038168000}
   - component: {fileID: 114418283654460166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballConfig: {fileID: 11400000, guid: d4ec258ecdf38fe429bc5c23e23409ea, type: 2}
+  color: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
   currentSpeed: 0
 --- !u!212 &212012587219738924
 SpriteRenderer:
