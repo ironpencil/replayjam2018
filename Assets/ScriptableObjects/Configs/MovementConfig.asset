@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a95219eb8b2ac4f8931f833bd52254, type: 3}
   m_Name: MovementConfig
   m_EditorClassIdentifier: 
-  speed: 15
-  initialJumpForce: 17
+  speed: 12
+  initialJumpForce: 15
   holdJumpForce: 0.75
   maxJumpTime: 0.25
   jumpDecay: 1
