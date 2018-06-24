@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBallCollider : MonoBehaviour
 {
     public GameEvent playerDamagedEvent;
+    public PlayerState state;
+    
 	private PlayerData player;
     private PlayerMovement playerMovement;
 
@@ -16,7 +18,7 @@ public class PlayerBallCollider : MonoBehaviour
 
     public void BallEnter(BallController bc)
     {
-        if (!playerMovement.isInvulnerable) {
+        if (!state.IsInvulnerable()) {
             player.ChangeHealth(-1);
 		    playerDamagedEvent.Raise();
             playerMovement.Stun(bc.GetComponent<Rigidbody2D>().velocity.normalized);
