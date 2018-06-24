@@ -29,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     private PhysicsMaterial2D originalMaterial;
     private Collider2D col;
 
+    public AudioSource movementAudioSource;
+    public AudioEvent jumpAudioEvent;
+    public AudioEvent landAudioEvent;
+    public AudioEvent runAudioEvent;
+    public AudioEvent stunAudioEvent;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -120,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
             // seems to be a bug that currently requires the collider to be reset to refresh material
             col.enabled = !col.enabled;
             col.enabled = !col.enabled;
+
+            PlayAudioEvent(jumpAudioEvent, movementAudioSource);
         }
         else if (jumping)
         {
@@ -164,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
             {
+                PlayAudioEvent(landAudioEvent, movementAudioSource);
                 return true;
             }
         }
@@ -194,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.velocity = new Vector2(velocityX, velocityY);
         rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
         GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        PlayAudioEvent(stunAudioEvent, movementAudioSource);
     }
     private bool CanAddJumpForce(float jumpDuration)
     {
@@ -222,5 +232,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void PlayAudioEvent(AudioEvent audioE, AudioSource audioS) {
+        if (audioE != null && audioS != null) {
+            audioE.Play(audioS);
+        }
     }
 }

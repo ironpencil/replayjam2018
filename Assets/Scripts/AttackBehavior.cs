@@ -7,6 +7,10 @@ public class AttackBehavior : MonoBehaviour {
 	public int hitCount = 0;
 	public List<Collider2D> hitList;
 	public PlayerData playerData;
+	public AudioSource attackAudioSource;
+	public AudioEvent attackAudioEvent;
+	public AudioSource hitAudioSource;
+	public AudioEvent hitAudioEvent;
 
 	void Start()
 	{
@@ -19,6 +23,7 @@ public class AttackBehavior : MonoBehaviour {
 		this.attackAngle = attackAngle;
 		hitCount = 0;
 		hitList = new List<Collider2D>();
+		PlayAudioEvent(attackAudioEvent, attackAudioSource);
 	}
 
 	public void StopAttack()
@@ -49,6 +54,13 @@ public class AttackBehavior : MonoBehaviour {
 			playerData.AddBallColor(bc.color);
 			bc.Hit(playerData.playerId, attackAngle);
 			hitCount++;
+			PlayAudioEvent(hitAudioEvent, hitAudioSource);
 		}
 	}
+
+	private void PlayAudioEvent(AudioEvent audioE, AudioSource audioS) {
+        if (audioE != null && audioS != null) {
+            audioE.Play(audioS);
+        }
+    }
 }
