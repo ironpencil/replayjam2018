@@ -21,7 +21,6 @@ public class BlackoutState : Updateable {
     {
         foreach (PlayerColorCollection player in playerColorState.playerColors) {
             if (player.ballColors.Count >= blackoutCount) {
-				Debug.Log("BLACKOUT!!!");
                 blackoutPlayer = player.playerNumber;
 				blackoutTime = Time.time + blackoutDuration;
 				blackoutStartEvent.Raise();
@@ -47,7 +46,6 @@ public class BlackoutState : Updateable {
     {
         if (Time.time > blackoutTime && InBlackout())
 		{
-			Debug.Log("The blackout has ended...");
 			blackoutEndEvent.Raise();
 			playerColorState.ClearBallColors(blackoutPlayer);
 			blackoutPlayer = -1;

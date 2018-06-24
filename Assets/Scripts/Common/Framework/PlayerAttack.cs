@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackObject;
     public AttackConfig attackConfig;
 	public AttackBehavior attackBehavior;
+    public BlackoutState blackoutState;
     public PlayerState state;
     public float completeTime;
     public float recoveryTime;
@@ -37,7 +38,13 @@ public class PlayerAttack : MonoBehaviour
         && rwPlayer.GetButtonDown("Attack") 
         && Time.time > recoveryTime)
         {
-            StartAttack();
+            // If we're not in blackout, or you are the blackout
+            // player, then attack. If you're not the blackout
+            // player, may Heaven help you
+            if (!blackoutState.InBlackout() 
+            || blackoutState.blackoutPlayer == player.playerId) {
+                StartAttack();
+            }
         }
     }
 

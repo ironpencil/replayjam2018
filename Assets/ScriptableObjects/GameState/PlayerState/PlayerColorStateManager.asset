@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerColors:
   - playerNumber: 0
-    ballColors:
-    - {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
+    ballColors: []
   - playerNumber: 1
     ballColors: []
   blackoutState: {fileID: 11400000, guid: a8c5c04662f306c419cca6d5561bd5f7, type: 2}
+  colorChangeEvent: {fileID: 11400000, guid: b6c4a32b137af374a8281e044347d3be, type: 2}
   TEST_ONLY_PLAYER: 0
   TEST_ONLY_BALL: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
