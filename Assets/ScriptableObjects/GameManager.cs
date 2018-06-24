@@ -23,6 +23,8 @@ public class GameManager : ScriptableObject {
 
     public GameEvent startRoundEvent;
 
+    public bool acceptGameInput = true;
+
     public void StartGame()
     {
         SetState(GameState.RoundActive);

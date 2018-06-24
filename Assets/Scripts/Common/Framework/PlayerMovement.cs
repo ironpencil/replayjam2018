@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public IntVariable facing;
     private float stunTime;
     private float invulnTime;
+    private bool timedInvuln = false;
     public StunConfig stun;
+
+    public GameManager gameState;
 
     private int jumpCount = 0;
     private bool beginJump = false;
@@ -53,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // If the jump button is pressed and the player is grounded then the player should jump.
-        if (rwPlayer.GetButtonDown("Jump")
+        if (gameState.acceptGameInput && rwPlayer.GetButtonDown("Jump")
         && jumpCount < movementConfigs.maxJumps
         && !state.IsStunned())
         {
@@ -77,8 +80,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (state.IsInvulnerable() && Time.time > invulnTime)
+        if (timedInvuln && state.IsInvulnerable() && Time.time > invulnTime)
         {
+            timedInvuln = false;
             state.SetInvulnerable(false);
             GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
@@ -184,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
         stunTime = Time.time + stun.duration;
         invulnTime = Time.time + stun.invulnerabilityDuration;
         state.SetInvulnerable(true);
+        timedInvuln = true;
         state.SetState(PlayerState.State.stunned);
         float velocityX = rigidBody.velocity.x;
         float velocityY = rigidBody.velocity.y;

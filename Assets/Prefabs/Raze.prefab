@@ -684,6 +684,35 @@ MonoBehaviour:
   playerId: 1
   playerHealth: {fileID: 11400000, guid: ee3fdb586a9afea4e8511b3b58863497, type: 2}
   colorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
+  playerDeathEvent: {fileID: 11400000, guid: 0d2a523e484c12b4b81b432c2cbb757a, type: 2}
+--- !u!114 &114725127079866720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275271160353622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6194a581a24219f4685aa74be1d3659e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114798033986276820}
+        m_MethodName: OnStateChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114798033986276820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -719,6 +748,7 @@ MonoBehaviour:
   completeTime: 14.154269
   recoveryTime: 0
   playerFacing: {fileID: 11400000, guid: b7867ca3221354e4b80ce041ad355621, type: 2}
+  gameState: {fileID: 11400000, guid: 20d088a95cbd83b4c92e2aa0ab1b526c, type: 2}
 --- !u!114 &114993353379517806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,6 +773,7 @@ MonoBehaviour:
   landAudioEvent: {fileID: 11400000, guid: 0e7a3fb622cb67e4db47fca7672a8f86, type: 2}
   runAudioEvent: {fileID: 11400000, guid: 43127de0709a55943ab137dd26ee17d0, type: 2}
   stunAudioEvent: {fileID: 11400000, guid: 7c355679728e15b438dd7f9ba3bd1470, type: 2}
+  gameState: {fileID: 11400000, guid: 20d088a95cbd83b4c92e2aa0ab1b526c, type: 2}
 --- !u!212 &212260967988055754
 SpriteRenderer:
   m_ObjectHideFlags: 1
