@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46eeff91d7522784191868600bd6d78a, type: 3}
-  m_Name: BallColorGreen
+  m_Name: BallColorYellow
   m_EditorClassIdentifier: 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject attackObject;
+    public GameObject vanishArmObject;
     public AttackConfig attackConfig;
 	public AttackBehavior attackBehavior;
     public PlayerState state;
@@ -21,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
         player = GetComponent<PlayerData>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
 		attackObject.SetActive(false);
+        vanishArmObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -44,7 +46,8 @@ public class PlayerAttack : MonoBehaviour
     void StartAttack()
     {
 		attackObject.SetActive(true);
-		Vector2 attackAngle = GetAttackAngle();
+        vanishArmObject.SetActive(false);
+        Vector2 attackAngle = GetAttackAngle();
 		attackBehavior.StartAttack(attackAngle);
 		UpdateAttackAngle(attackAngle);
 		completeTime = Time.time + attackConfig.duration;
@@ -84,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
     void StopAttack()
     {
 		attackObject.SetActive(false);
+        vanishArmObject.SetActive(true);
         state.StopAttack();
 		//Debug.Log("Hits: " + attackBehavior.hitCount);
     }
