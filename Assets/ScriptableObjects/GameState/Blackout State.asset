@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackoutCount: 3
   blackoutPlayer: -1
-  blackoutDuration: 20
+  blackoutDuration: 7
   blackoutStartEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
   blackoutEndEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
   playerColorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}

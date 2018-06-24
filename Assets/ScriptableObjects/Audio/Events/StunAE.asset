@@ -11,4 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
   m_Name: StunAE
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: b8aeef9593935cb409ba58b88b6585a2, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 0.84
+  maxPitch: 1.11
