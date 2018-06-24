@@ -39,6 +39,8 @@ public class GameStateController : MonoBehaviour {
 
     public PlayerColorState playerColorManager;
 
+    public BlackoutState blackoutState;
+
     [SerializeField]
     private GameObject playerOneInstance;
     [SerializeField]
@@ -215,6 +217,8 @@ public class GameStateController : MonoBehaviour {
 
         playerColorManager.ClearBallColors(0);
         playerColorManager.ClearBallColors(1);
+
+        blackoutState.EndBlackout();
     }
 
     public void PrepareRound()

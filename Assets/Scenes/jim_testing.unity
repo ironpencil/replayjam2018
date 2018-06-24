@@ -346,6 +346,7 @@ MonoBehaviour:
     type: 2}
   gameVictor: {fileID: 11400000, guid: ed72ad8094b013349a7aaac2a3b5b6a6, type: 2}
   playerColorManager: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
+  blackoutState: {fileID: 11400000, guid: a8c5c04662f306c419cca6d5561bd5f7, type: 2}
   playerOneInstance: {fileID: 1007371089}
   playerTwoInstance: {fileID: 2104304313}
   ballStartPositions:

@@ -11,6 +11,7 @@ public class BlackoutState : Updateable {
     public GameEvent blackoutStartEvent;
 	public GameEvent blackoutEndEvent;
 	public PlayerColorState playerColorState;
+    public GameManager gameState;
 
 	public void OnEnable()
     {
@@ -19,13 +20,28 @@ public class BlackoutState : Updateable {
 
 	public void CheckForBlackout()
     {
-        foreach (PlayerColorCollection player in playerColorState.playerColors) {
-            if (player.ballColors.Count >= blackoutCount) {
-                blackoutPlayer = player.playerNumber;
-				blackoutTime = Time.time + blackoutDuration;
-				blackoutStartEvent.Raise();
+        if (gameState.CurrentState == GameManager.GameState.RoundActive)
+        {
+            foreach (PlayerColorCollection player in playerColorState.playerColors)
+            {
+                if (player.ballColors.Count >= blackoutCount)
+                {
+                    blackoutPlayer = player.playerNumber;
+                    blackoutTime = Time.time + blackoutDuration;
+                    blackoutStartEvent.Raise();
+                }
             }
         }
+    }
+
+    public void EndBlackout()
+    {
+        if (blackoutPlayer > -1)
+        {
+            playerColorState.ClearBallColors(blackoutPlayer);
+        }
+        blackoutPlayer = -1;
+        blackoutEndEvent.Raise();
     }
 
 	public bool InBlackout()
@@ -46,9 +62,7 @@ public class BlackoutState : Updateable {
     {
         if (Time.time > blackoutTime && InBlackout())
 		{
-			blackoutEndEvent.Raise();
-			playerColorState.ClearBallColors(blackoutPlayer);
-			blackoutPlayer = -1;
+            EndBlackout();
 		}
     }
 
