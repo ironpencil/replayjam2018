@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentJumpForce = 0.0f;
     private bool grounded = false;
     private PhysicsMaterial2D originalMaterial;
-    private Collider2D col;
+    private Collider2D collider;
 
     public AudioSource movementAudioSource;
     public AudioEvent jumpAudioEvent;
@@ -41,10 +41,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
         player = GetComponent<PlayerData>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
         state.SetState(PlayerState.State.idle);
+        originalMaterial = collider.sharedMaterial;
     }
 
     void Update()
@@ -64,16 +65,17 @@ public class PlayerMovement : MonoBehaviour
             jumpCount++;
         }
 
+        Debug.Log("Grounded: " + grounded + "; Begin Jump: " + beginJump + "; Jumping: " + jumping);
         if (grounded && !beginJump && !jumping)
         {
             //we're on the ground, we're not jumping, make sure our collision material is correct
-            if (col.sharedMaterial != originalMaterial)
+            if (collider.sharedMaterial != originalMaterial)
             {
-                col.sharedMaterial = originalMaterial;
+                collider.sharedMaterial = originalMaterial;
 
                 // seems to be a bug that currently requires the collider to be reset to refresh material
-                col.enabled = !col.enabled;
-                col.enabled = !col.enabled;
+                collider.enabled = !collider.enabled;
+                collider.enabled = !collider.enabled;
             }
         }
     }
@@ -125,11 +127,11 @@ public class PlayerMovement : MonoBehaviour
             //velocityY += initialJumpForce;
             velocityY = movementConfigs.initialJumpForce;
 
-            col.sharedMaterial = noFrictionMaterial;
+            collider.sharedMaterial = noFrictionMaterial;
 
             // seems to be a bug that currently requires the collider to be reset to refresh material
-            col.enabled = !col.enabled;
-            col.enabled = !col.enabled;
+            collider.enabled = !collider.enabled;
+            collider.enabled = !collider.enabled;
 
             PlayAudioEvent(jumpAudioEvent, movementAudioSource);
         }
@@ -187,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
     {
         stunTime = Time.time + stun.duration;
         invulnTime = Time.time + stun.invulnerabilityDuration;
+        jumping = false;
         state.SetInvulnerable(true);
         timedInvuln = true;
         state.SetState(PlayerState.State.stunned);
