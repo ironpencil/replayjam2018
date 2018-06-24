@@ -16,16 +16,23 @@ public class BallController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HitRandomly();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Stop();
-        }
+		
 	}
+
+    private void FixedUpdate()
+    {
+        MaintainVelocity();
+    }
+
+    public void MaintainVelocity()
+    {
+        Vector2 vel = rb.velocity;
+
+        if (vel.sqrMagnitude != currentSpeed*currentSpeed)
+        {
+            rb.velocity = vel.normalized * currentSpeed;
+        }
+    }
 
     public void Hit(int playerId, Vector2 direction)
     {
@@ -39,7 +46,8 @@ public class BallController : MonoBehaviour {
             currentSpeed = Mathf.Min(ballConfig.maxSpeed, currentSpeed + ballConfig.addSpeedOnHit);
         }
 
-        rb.AddForce(direction.normalized * currentSpeed, ForceMode2D.Impulse);
+        rb.velocity = direction.normalized * currentSpeed;
+        //rb.AddForce(direction.normalized * currentSpeed, ForceMode2D.Impulse);
     }
 
     [ContextMenu("Hit Randomly")]

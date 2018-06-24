@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86934d8f0d7ae94ca5d58f4df1a6bb0, type: 3}
-  m_Name: PlayerTwoFacing
+  m_Script: {fileID: 11500000, guid: 46eeff91d7522784191868600bd6d78a, type: 3}
+  m_Name: BallColorMagenta
   m_EditorClassIdentifier: 
-  Value: 1
-  initValOnEnable: 1
-  initValue: -1

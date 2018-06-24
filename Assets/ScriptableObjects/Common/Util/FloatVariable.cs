@@ -7,4 +7,14 @@ public class FloatVariable : ScriptableObject {
 
     public float Value;
 
+    public bool initValOnEnable = false;
+    public float initValue;
+
+    public void OnEnable()
+    {
+        if (initValOnEnable)
+        {
+            Value = initValue;
+        }
+    }
 }
