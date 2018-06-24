@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29980b3d42ebfaf41951bf68fdbbeeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamagedEvent: {fileID: 11400000, guid: 4882c6725be21d3418c97b7d04a8f775, type: 2}
-  state: {fileID: 11400000, guid: cbb20384c6bacf74b90f41b1c05586d2, type: 2}
+  playerDamagedEvent: {fileID: 11400000, guid: 21f457bdebf8d514fa0a552820a65959, type: 2}
+  state: {fileID: 11400000, guid: 2b49a4c027b9cce4f945c947637a2df7, type: 2}
   colorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
 --- !u!114 &114265960581439992
 MonoBehaviour:
@@ -585,6 +585,7 @@ MonoBehaviour:
   playerId: 1
   playerHealth: {fileID: 11400000, guid: ee3fdb586a9afea4e8511b3b58863497, type: 2}
   colorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
+  playerDeathEvent: {fileID: 11400000, guid: 0d2a523e484c12b4b81b432c2cbb757a, type: 2}
 --- !u!114 &114725127079866720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -651,6 +652,7 @@ MonoBehaviour:
   completeTime: 14.154269
   recoveryTime: 0
   playerFacing: {fileID: 11400000, guid: b7867ca3221354e4b80ce041ad355621, type: 2}
+  gameState: {fileID: 11400000, guid: 20d088a95cbd83b4c92e2aa0ab1b526c, type: 2}
 --- !u!114 &114993353379517806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,6 +672,7 @@ MonoBehaviour:
   noFrictionMaterial: {fileID: 6200000, guid: 9287745a7dc6b934da3986fe29738681, type: 2}
   facing: {fileID: 11400000, guid: b7867ca3221354e4b80ce041ad355621, type: 2}
   stun: {fileID: 11400000, guid: adca4abcc751bc643b48dba32c6caf08, type: 2}
+  gameState: {fileID: 11400000, guid: 20d088a95cbd83b4c92e2aa0ab1b526c, type: 2}
 --- !u!212 &212260967988055754
 SpriteRenderer:
   m_ObjectHideFlags: 1

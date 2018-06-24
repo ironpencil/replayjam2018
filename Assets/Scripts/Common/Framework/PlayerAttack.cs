@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     private PlayerData player;
     public IntVariable playerFacing;
 
+    public GameManager gameState;
+
     // Use this for initialization
     void Start()
     {
@@ -35,10 +37,11 @@ public class PlayerAttack : MonoBehaviour
             StopAttack();
         }
 
-        if(!state.IsAttacking()
-        && !state.IsStunned()
-        && rwPlayer.GetButtonDown("Attack") 
-        && Time.time > recoveryTime)
+        if(gameState.acceptGameInput
+            && !state.IsAttacking()
+            && !state.IsStunned()
+            && rwPlayer.GetButtonDown("Attack") 
+            && Time.time > recoveryTime)
         {
             // If we're not in blackout, or you are the blackout
             // player, then attack. If you're not the blackout
