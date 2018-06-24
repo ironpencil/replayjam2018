@@ -617,6 +617,7 @@ MonoBehaviour:
   attackObject: {fileID: 1027203477730754}
   attackConfig: {fileID: 11400000, guid: 68abf493adc7eb04aae841bd42e5fa88, type: 2}
   attackBehavior: {fileID: 114273322281836604}
+  blackoutState: {fileID: 11400000, guid: a8c5c04662f306c419cca6d5561bd5f7, type: 2}
   state: {fileID: 11400000, guid: cbb20384c6bacf74b90f41b1c05586d2, type: 2}
   completeTime: 14.154269
   recoveryTime: 0

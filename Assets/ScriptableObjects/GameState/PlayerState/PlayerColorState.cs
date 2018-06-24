@@ -11,6 +11,8 @@ public class PlayerColorState : ScriptableObject {
 
     public BlackoutState blackoutState;
 
+    public GameEvent colorChangeEvent;
+
     [SerializeField]
     int TEST_ONLY_PLAYER;
 
@@ -57,6 +59,7 @@ public class PlayerColorState : ScriptableObject {
                 RemoveBallColor(ownerId, ballColor);
             }
             player.ballColors.Add(ballColor);
+            colorChangeEvent.Raise();
             blackoutState.CheckForBlackout();
         }
     }
@@ -74,6 +77,7 @@ public class PlayerColorState : ScriptableObject {
         if (player.ballColors.Contains(ballColor))
         {
             player.ballColors.Remove(ballColor);
+            colorChangeEvent.Raise();
         }
     }
 
@@ -98,6 +102,7 @@ public class PlayerColorState : ScriptableObject {
         }
 
         player.ballColors.Clear();
+        colorChangeEvent.Raise();
     }
 
     public PlayerColorCollection GetPlayerCollection(int playerNum)
