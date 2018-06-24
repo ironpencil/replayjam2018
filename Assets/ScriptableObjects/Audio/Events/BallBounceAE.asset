@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Name: BallBounceAE
   m_EditorClassIdentifier: 
   clips: []
+  minVolume: 0.204
+  maxVolume: 0.298
+  minPitch: 0.8
+  maxPitch: 1.11

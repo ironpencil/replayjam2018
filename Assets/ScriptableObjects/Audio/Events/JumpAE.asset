@@ -11,4 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
   m_Name: JumpAE
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: c3652d4c3041b1142a0522121cace0cc, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 0.89
+  maxPitch: 1.11

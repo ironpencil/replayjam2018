@@ -9,8 +9,8 @@ public class AttackBehavior : MonoBehaviour {
 	public PlayerData playerData;
 	public AudioSource attackAudioSource;
 	public AudioEvent attackAudioEvent;
-	public AudioSource hitAudioSource;
-	public AudioEvent hitAudioEvent;
+    public AudioSource hitAudioSource;
+    public AudioEvent hitAudioEvent;
 
 	void Start()
 	{
@@ -23,6 +23,7 @@ public class AttackBehavior : MonoBehaviour {
 		this.attackAngle = attackAngle;
 		hitCount = 0;
 		hitList = new List<Collider2D>();
+
 		PlayAudioEvent(attackAudioEvent, attackAudioSource);
 	}
 
