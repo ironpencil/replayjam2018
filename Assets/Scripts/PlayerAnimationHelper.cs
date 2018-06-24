@@ -32,15 +32,12 @@ public class PlayerAnimationHelper : MonoBehaviour {
             switch (newState)
             {
                 case PlayerState.State.idle:
-                    Debug.Log("Idle");
                     playerAnimator.SetTrigger(animConfig.doIdleParam);
                     break;
                 case PlayerState.State.moving:
-                    Debug.Log("Run");
                     playerAnimator.SetTrigger(animConfig.doRunParam);
                     break;
                 case PlayerState.State.jumping:
-                    Debug.Log("Jump");
                     if (currentState != PlayerState.State.falling)
                     {
                         playerAnimator.SetTrigger(animConfig.doJumpParam);
@@ -49,7 +46,6 @@ public class PlayerAnimationHelper : MonoBehaviour {
                 case PlayerState.State.falling:
                     break;
                 case PlayerState.State.stunned:
-                    Debug.Log("Stun");
                     playerAnimator.SetTrigger(animConfig.doStunParam);
                     break;
                 default:
