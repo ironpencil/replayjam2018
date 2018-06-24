@@ -8,26 +8,38 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player rwPlayer;
     private PlayerData player;
-    public PlayerState state;
+    
 
     private Rigidbody2D rigidBody;
     public Transform[] groundChecks;
     public MovementConfig movementConfigs;
+
     public PhysicsMaterial2D noFrictionMaterial;
 
     public IntVariable facing;
     private float stunTime;
     private float invulnTime;
     public StunConfig stun;
+    public bool isInvulnerable;
 
     private int jumpCount = 0;
     private bool beginJump = false;
     private bool jumping = false;
-    private float startJumpTime = 0.0f;
+    private float jumpTime = 0.0f;
     private float currentJumpForce = 0.0f;
     private bool grounded = false;
     private PhysicsMaterial2D originalMaterial;
     private Collider2D col;
+    
+    public State state;
+    public enum State
+    {
+        moving,
+        still,
+        jumping,
+        falling,
+        stunned
+    }
 
     void Start()
     {
@@ -35,21 +47,25 @@ public class PlayerMovement : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         player = GetComponent<PlayerData>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
-        state.SetState(PlayerState.State.idle);
+        state = State.still;
     }
 
     void Update()
     {
-        grounded = IsGrounded();
+        grounded = false;
 
-        if (grounded) {
-            jumpCount = 0;
+        foreach (Transform groundCheck in groundChecks)
+        {
+            if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
+            {
+                grounded = true;
+                jumpCount = 0;
+                break;
+            }
         }
-        
+
         // If the jump button is pressed and the player is grounded then the player should jump.
-        if (rwPlayer.GetButtonDown("Jump")
-        && jumpCount < movementConfigs.maxJumps
-        && !state.IsStunned())
+        if (rwPlayer.GetButtonDown("Jump") && jumpCount < movementConfigs.maxJumps)
         {
             beginJump = true;
             jumpCount++;
@@ -71,28 +87,46 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (state.IsInvulnerable() && Time.time > invulnTime)
+        if (isInvulnerable && Time.time > invulnTime)
         {
-            state.SetInvulnerable(false);
+            isInvulnerable = false;
             GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
-        if (state.IsStunned())
+        if (state == State.stunned)
         {
             if (Time.time > stunTime)
             {
                 UnStun();
             }
-        }
-        else
-        {
+        } else {
             HandleMovementInput();
         }
     }
 
-
-    public void UnStun()
+    public void Stun(Vector2 direction)
     {
-        state.SetState(PlayerState.State.idle);
+        stunTime = Time.time + stun.duration;
+        invulnTime = Time.time + stun.invulnerabilityDuration;
+        isInvulnerable = true;
+        state = State.stunned;
+        float velocityX = rigidBody.velocity.x;
+        float velocityY = rigidBody.velocity.y;
+        
+        if (rigidBody.velocity.y > 0) {
+            velocityY = 0;
+        }
+        if (rigidBody.velocity.x > 0 && direction.x < 0) {
+            velocityX = 0;
+        } else if (rigidBody.velocity.x < 0 && direction.x > 0) {
+            velocityX = 0;
+        }
+        rigidBody.velocity = new Vector2(velocityX, velocityY);
+        rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+    }
+
+    public void UnStun() {
+        state = State.still;
         GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 
@@ -106,8 +140,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (beginJump)
         {
-            state.SetState(PlayerState.State.jumping);
-            startJumpTime = Time.time;
+            state = State.jumping;
+            jumpTime = Time.time;
             jumping = true;
             currentJumpForce = movementConfigs.holdJumpForce;
 
@@ -123,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (jumping)
         {
-            float jumpDuration = Time.time - startJumpTime;
+            float jumpDuration = Time.time - jumpTime;
 
             if (CanAddJumpForce(jumpDuration) && currentJumpForce > 0.0f)
             {
@@ -134,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumping = false;
                 currentJumpForce = 0.0f;
-                state.SetState(PlayerState.State.falling);
+                state = State.falling;
             }
         }
 
@@ -143,58 +177,17 @@ public class PlayerMovement : MonoBehaviour
         if (velocityX < 0) facing.Value = -1;
         if (velocityX > 0) facing.Value = 1;
 
-        if (grounded && !jumping && !state.IsStunned())
-        {
-            if (velocityX == 0)
-            {
-                state.SetState(PlayerState.State.idle);
-            }
-            else
-            {
-                state.SetState(PlayerState.State.moving);
+        if (grounded) {
+            if (velocityX == 0) {
+                state = State.still;
+            } else {
+                state = State.moving;
             }
         }
 
         rigidBody.velocity = new Vector2(velocityX, velocityY);
     }
 
-    bool IsGrounded()
-    {
-        foreach (Transform groundCheck in groundChecks)
-        {
-            if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public void Stun(Vector2 direction)
-    {
-        stunTime = Time.time + stun.duration;
-        invulnTime = Time.time + stun.invulnerabilityDuration;
-        state.SetInvulnerable(true);
-        state.SetState(PlayerState.State.stunned);
-        float velocityX = rigidBody.velocity.x;
-        float velocityY = rigidBody.velocity.y;
-
-        if (rigidBody.velocity.y > 0)
-        {
-            velocityY = 0;
-        }
-        if (rigidBody.velocity.x > 0 && direction.x < 0)
-        {
-            velocityX = 0;
-        }
-        else if (rigidBody.velocity.x < 0 && direction.x > 0)
-        {
-            velocityX = 0;
-        }
-        rigidBody.velocity = new Vector2(velocityX, velocityY);
-        rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
-        GetComponentInChildren<SpriteRenderer>().color = Color.red;
-    }
     private bool CanAddJumpForce(float jumpDuration)
     {
         //if they stopped pressing Jump, stop jumping
@@ -215,8 +208,7 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
 
-        //if they are stunned while jumping, stop jumping
-        if (state.IsStunned())
+        if (state == State.stunned)
         {
             return false;
         }

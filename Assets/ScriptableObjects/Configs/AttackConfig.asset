@@ -11,6 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60136f7235db434e8f58484b66090b8, type: 3}
   m_Name: AttackConfig
   m_EditorClassIdentifier: 
-  duration: 0.15
+  duration: 0.25
   strength: 10
-  recovery: 0.5

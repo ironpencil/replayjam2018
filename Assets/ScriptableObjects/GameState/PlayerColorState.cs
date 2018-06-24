@@ -7,9 +7,7 @@ using UnityEngine;
 public class PlayerColorState : ScriptableObject {
 
     [SerializeField]
-    public List<PlayerColorCollection> playerColors;
-
-    public BlackoutState blackoutState;
+    List<PlayerColorCollection> playerColors;
 
     [SerializeField]
     int TEST_ONLY_PLAYER;
@@ -55,7 +53,6 @@ public class PlayerColorState : ScriptableObject {
                 RemoveBallColor(ownerId, ballColor);
             }
             player.ballColors.Add(ballColor);
-            blackoutState.CheckForBlackout();
         }
     }
 

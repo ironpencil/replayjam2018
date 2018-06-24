@@ -8,7 +8,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackObject;
     public AttackConfig attackConfig;
 	public AttackBehavior attackBehavior;
-    public PlayerState state;
+    private PlayerMovement playerMovement;
+    public bool isAttacking;
     public float completeTime;
     public float recoveryTime;
     private Player rwPlayer;
@@ -21,20 +22,19 @@ public class PlayerAttack : MonoBehaviour
         player = GetComponent<PlayerData>();
         rwPlayer = ReInput.players.GetPlayer(player.playerId);
 		attackObject.SetActive(false);
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((state.IsAttacking() && completeTime <= Time.time) 
-        || state.IsStunned())
+        if (isAttacking && completeTime <= Time.time || playerMovement.state == PlayerMovement.State.stunned)
         {
             StopAttack();
         }
 
-        if(!state.IsAttacking()
-        && !state.IsStunned()
-        && rwPlayer.GetButtonDown("Attack") 
+        if (!isAttacking && rwPlayer.GetButtonDown("Attack") 
+        && playerMovement.state != PlayerMovement.State.stunned
         && Time.time > recoveryTime)
         {
             StartAttack();
@@ -49,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
 		UpdateAttackAngle(attackAngle);
 		completeTime = Time.time + attackConfig.duration;
         recoveryTime = Time.time + attackConfig.duration + attackConfig.recovery;
-        state.StartAttack();
+        isAttacking = true;
     }
 
 	void UpdateAttackAngle(Vector2 attackAngle)
@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
 
         attackObject.transform.localScale = attackScale;
 		attackObject.transform.eulerAngles = new Vector3(0, 0, angle);
+		//attackObject.transform.RotateAround(transform.position, new Vector3(x, y, 0));
 	}
 
 	Vector2 GetAttackAngle()
@@ -83,8 +84,8 @@ public class PlayerAttack : MonoBehaviour
 
     void StopAttack()
     {
+        isAttacking = false;
 		attackObject.SetActive(false);
-        state.StopAttack();
-		//Debug.Log("Hits: " + attackBehavior.hitCount);
+		Debug.Log("Hits: " + attackBehavior.hitCount);
     }
 }

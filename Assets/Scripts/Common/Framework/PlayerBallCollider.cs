@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerBallCollider : MonoBehaviour
 {
     public GameEvent playerDamagedEvent;
-    public PlayerState state;
-    public PlayerColorState colorState;
-
 	private PlayerData player;
     private PlayerMovement playerMovement;
 
@@ -19,8 +16,7 @@ public class PlayerBallCollider : MonoBehaviour
 
     public void BallEnter(BallController bc)
     {
-        if (!state.IsInvulnerable() 
-        && player.playerId != colorState.GetBallOwner(bc.color)) {
+        if (!playerMovement.isInvulnerable) {
             player.ChangeHealth(-1);
 		    playerDamagedEvent.Raise();
             playerMovement.Stun(bc.GetComponent<Rigidbody2D>().velocity.normalized);
