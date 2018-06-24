@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationHelper : MonoBehaviour {
 
-    public SpriteRenderer playerSprite;
+    public Transform playerImage;
     public IntVariable playerFacing;
     public MovementConfig movementConfig;
     public Animator playerAnimator;
@@ -30,9 +30,9 @@ public class PlayerAnimationHelper : MonoBehaviour {
     {
         if (previousFacing != playerFacing.Value)
         {
-            Vector3 playerScale = playerSprite.transform.localScale;
+            Vector3 playerScale = playerImage.localScale;
             playerScale.x = playerFacing.Value;
-            playerSprite.transform.localScale = playerScale;
+            playerImage.localScale = playerScale;
             previousFacing = playerFacing.Value;
         }
     }
