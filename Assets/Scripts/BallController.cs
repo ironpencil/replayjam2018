@@ -6,6 +6,8 @@ public class BallController : MonoBehaviour {
     public BallConfig ballConfig;
     public BallColor color;
     public float currentSpeed = 0.0f;
+    public AudioEvent ballHitWall;
+    public AudioSource ballAudioSource;
 
     private Rigidbody2D rb;
 	// Use this for initialization
@@ -50,6 +52,10 @@ public class BallController : MonoBehaviour {
         //rb.AddForce(direction.normalized * currentSpeed, ForceMode2D.Impulse);
     }
 
+    public void OnCollisionEnter2D(Collision2D collision) {
+        PlayAudioEvent(ballHitWall, ballAudioSource);
+    }
+
     [ContextMenu("Hit Randomly")]
     public void HitRandomly()
     {
@@ -66,5 +72,11 @@ public class BallController : MonoBehaviour {
     {
         rb.velocity = Vector2.zero;
         currentSpeed = 0.0f;
+    }
+
+    private void PlayAudioEvent(AudioEvent audioE, AudioSource audioS) {
+        if (audioE != null && audioS != null) {
+            audioE.Play(audioS);
+        }
     }
 }
