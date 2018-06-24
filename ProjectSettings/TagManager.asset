@@ -18,8 +18,8 @@ TagManager:
   - Balls
   - Attack
   - PlayerHitbox
-  - 
-  - 
+  - PlayerWalls
+  - BallWalls
   - 
   - 
   - 
