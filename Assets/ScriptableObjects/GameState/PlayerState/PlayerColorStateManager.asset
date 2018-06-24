@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: PlayerColorStateManager
   m_EditorClassIdentifier: 
   playerColors: []
+  blackoutState: {fileID: 0}
   TEST_ONLY_PLAYER: 0
   TEST_ONLY_BALL: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}

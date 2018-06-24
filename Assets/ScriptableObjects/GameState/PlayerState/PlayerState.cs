@@ -19,6 +19,12 @@ public class PlayerState : ScriptableObject {
 		stunned
 	}
 
+	public void OnEnable()
+    {
+        isAttacking = false;
+		isInvulnerable = false;
+    }
+
 	public bool IsIdle() {
 		return this.value == State.idle;
 	}

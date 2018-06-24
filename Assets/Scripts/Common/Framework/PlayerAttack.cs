@@ -72,6 +72,6 @@ public class PlayerAttack : MonoBehaviour
     {
 		attackObject.SetActive(false);
         state.StopAttack();
-		Debug.Log("Hits: " + attackBehavior.hitCount);
+		//Debug.Log("Hits: " + attackBehavior.hitCount);
     }
 }
