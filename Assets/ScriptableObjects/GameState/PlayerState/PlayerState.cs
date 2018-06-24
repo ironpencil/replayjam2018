@@ -54,8 +54,11 @@ public class PlayerState : ScriptableObject {
 	}
 
 	public void SetState(State nState) {
-		this.value = nState;
-		playerStateChangedEvent.Raise();
+        if (this.value != nState)
+        {
+            this.value = nState;
+            playerStateChangedEvent.Raise();
+        }
 	}
 
 	public void StartAttack() {
