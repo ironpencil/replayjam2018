@@ -9,7 +9,7 @@ public class ColorUI : MonoBehaviour {
 	private Dictionary<BallColor, GameObject> colorDict;
 	public PlayerColorState pcs;
 
-	public PlayerData player;
+    public int playerNum;
 
 	void Start() {
 		colorDict = new Dictionary<BallColor, GameObject>();
@@ -23,7 +23,7 @@ public class ColorUI : MonoBehaviour {
 	public void UpdateColorUI() {
 		DisableAll();
 
-		foreach (BallColor bc in pcs.GetPlayerCollection(player.playerId).ballColors)
+		foreach (BallColor bc in pcs.GetPlayerCollection(playerNum).ballColors)
 		{
 			colorDict[bc].SetActive(true);
 		}
