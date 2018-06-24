@@ -23,7 +23,7 @@ AnimationClip:
     - time: 0.125
       value: {fileID: 21300000, guid: e8f9968d6e013704db6eca5af8256090, type: 3}
     attribute: m_Sprite
-    path: Body
+    path: Sprites/Body
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -32,7 +32,7 @@ AnimationClip:
     - time: 0.125
       value: {fileID: 21300000, guid: a8cdbc1c23324c54d965bbeb92b144b6, type: 3}
     attribute: m_Sprite
-    path: Arm
+    path: Sprites/Arm
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 8

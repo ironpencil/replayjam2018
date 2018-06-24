@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86934d8f0d7ae94ca5d58f4df1a6bb0, type: 3}
   m_Name: PlayerOneFacing
   m_EditorClassIdentifier: 
-  Value: 1
+  Value: -1
+  initValOnEnable: 1
+  initValue: 1
