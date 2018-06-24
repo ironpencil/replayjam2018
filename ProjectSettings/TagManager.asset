@@ -17,7 +17,7 @@ TagManager:
   - Players
   - Balls
   - Attack
-  - 
+  - PlayerHitbox
   - 
   - 
   - 
@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1535627203
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 4066691459
+    locked: 0
+  - name: Ball
+    uniqueID: 2141587111
+    locked: 0
+  - name: Foreground
+    uniqueID: 2431388827
+    locked: 0
+  - name: UI
+    uniqueID: 2373321921
     locked: 0

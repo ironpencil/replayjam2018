@@ -55,6 +55,19 @@ public class PlayerAttack : MonoBehaviour
 	void UpdateAttackAngle(Vector2 attackAngle)
 	{
 		float angle = Mathf.Atan2(attackAngle.y, attackAngle.x) * Mathf.Rad2Deg;
+
+        Vector3 attackScale = attackObject.transform.localScale;
+
+        if (angle < -90 || angle > 90)
+        {
+            angle += 180;
+            attackScale.x = -1;
+        } else
+        {
+            attackScale.x = 1;
+        }
+
+        attackObject.transform.localScale = attackScale;
 		attackObject.transform.eulerAngles = new Vector3(0, 0, angle);
 	}
 

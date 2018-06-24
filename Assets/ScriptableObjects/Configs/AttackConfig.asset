@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.15
   strength: 10
-  recovery: 0.5
+  recovery: 0.1
