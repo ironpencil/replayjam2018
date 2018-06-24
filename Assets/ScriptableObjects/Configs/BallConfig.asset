@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae73112ec2c2d2748bb6d21e606b1be7, type: 3}
   m_Name: BallConfig
   m_EditorClassIdentifier: 
-  initialSpeed: 10
+  initialSpeed: 5
   mass: 1
   addSpeedOnHit: 1
-  maxSpeed: 20
+  maxSpeed: 15

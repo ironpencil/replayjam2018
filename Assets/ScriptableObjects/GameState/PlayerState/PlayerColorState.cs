@@ -20,6 +20,8 @@ public class PlayerColorState : ScriptableObject {
     public void OnEnable()
     {
         playerColors = new List<PlayerColorCollection>();
+
+        TestInitializePlayers();
     }
 
     public PlayerColorCollection InitializePlayer(int playerNum)

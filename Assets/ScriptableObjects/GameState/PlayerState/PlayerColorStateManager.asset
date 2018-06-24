@@ -11,7 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2da8262d0cef54db0330c7e1d79ae8, type: 3}
   m_Name: PlayerColorStateManager
   m_EditorClassIdentifier: 
-  playerColors: []
-  blackoutState: {fileID: 0}
+  playerColors:
+  - playerNumber: 0
+    ballColors:
+    - {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
+  - playerNumber: 1
+    ballColors: []
+  blackoutState: {fileID: 11400000, guid: a8c5c04662f306c419cca6d5561bd5f7, type: 2}
   TEST_ONLY_PLAYER: 0
   TEST_ONLY_BALL: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
