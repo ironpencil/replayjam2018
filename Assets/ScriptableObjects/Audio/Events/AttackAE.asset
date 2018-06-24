@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
   m_Name: AttackAE
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 8cd17cbd22491174d97b194c6c7d2350, type: 3}
