@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Rewired.ComponentControls.Effects;
 using UnityEngine;
 
 public class BallController : MonoBehaviour {
@@ -8,6 +9,10 @@ public class BallController : MonoBehaviour {
     public float currentSpeed = 0.0f;
     [SerializeField]
     private float minimumSpeed;
+    [SerializeField]
+    private float frozenTime;
+    private Vector2 velocityHold;
+    private bool isFrozen = false;
     public AudioEvent ballHitWall;
     public AudioSource ballAudioSource;
 
@@ -25,7 +30,11 @@ public class BallController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        MaintainVelocity();
+        if (!isFrozen) {
+            MaintainVelocity();
+        } else {
+            CheckUnfrozen();
+        }
     }
 
     public void MaintainVelocity()
@@ -35,6 +44,31 @@ public class BallController : MonoBehaviour {
         if (vel.sqrMagnitude != currentSpeed*currentSpeed)
         {
             rb.velocity = vel.normalized * currentSpeed;
+        }
+    }
+
+    public void Freeze(float frozenTime)
+    {
+        this.frozenTime = Time.time + frozenTime;
+        velocityHold = rb.velocity;
+        rb.velocity = Vector2.zero;
+        isFrozen = true;
+
+        RotateAroundAxis raa = GetComponentInChildren<RotateAroundAxis>();
+        if (raa != null) {
+            raa.enabled = false;
+        }
+    }
+
+    public void CheckUnfrozen()
+    {
+        if (frozenTime < Time.time) {
+            rb.velocity = velocityHold;
+            isFrozen = false;
+            RotateAroundAxis raa = GetComponentInChildren<RotateAroundAxis>();
+            if (raa != null) {
+                raa.enabled = true;
+            }
         }
     }
 
