@@ -6,6 +6,8 @@ public class BallController : MonoBehaviour {
     public BallConfig ballConfig;
     public BallColor color;
     public float currentSpeed = 0.0f;
+    [SerializeField]
+    private float minimumSpeed;
     public AudioEvent ballHitWall;
     public AudioSource ballAudioSource;
 
@@ -42,17 +44,25 @@ public class BallController : MonoBehaviour {
 
         if (currentSpeed == 0.0f)
         {
-            currentSpeed = ballConfig.initialSpeed;
+            minimumSpeed = ballConfig.initialSpeed;
         } else
         {
-            currentSpeed = Mathf.Min(ballConfig.maxSpeed, currentSpeed + ballConfig.addSpeedOnHit);
+            minimumSpeed = Mathf.Min(ballConfig.maxSpeed, currentSpeed + ballConfig.addSpeedOnHit);
         }
 
+        currentSpeed = minimumSpeed + ballConfig.hitBurst;
+        if (currentSpeed < ballConfig.minHitSpeed) {
+            currentSpeed = ballConfig.minHitSpeed;
+        }
         rb.velocity = direction.normalized * currentSpeed;
         //rb.AddForce(direction.normalized * currentSpeed, ForceMode2D.Impulse);
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
+        currentSpeed = currentSpeed - ballConfig.wallBounceBleed;
+        if (currentSpeed < minimumSpeed) {
+            currentSpeed = minimumSpeed;
+        }
         PlayAudioEvent(ballHitWall, ballAudioSource);
     }
 
