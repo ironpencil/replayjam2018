@@ -16,9 +16,6 @@ public class PlayerMovement : MonoBehaviour
     public PhysicsMaterial2D noFrictionMaterial;
 
     public IntVariable facing;
-    private float stunTime;
-    private float invulnTime;
-    private bool timedInvuln = false;
     public StunConfig stun;
 
     public GameManager gameState;
@@ -50,57 +47,89 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        grounded = IsGrounded();
+        if (!state.IsFrozen()) {
+            grounded = IsGrounded();
 
-        if (grounded) {
-            jumpCount = 0;
-        }
-        
-        // If the jump button is pressed and the player is grounded then the player should jump.
-        if (gameState.acceptGameInput && rwPlayer.GetButtonDown("Jump")
-        && jumpCount < movementConfigs.maxJumps
-        && !state.IsStunned())
-        {
-            beginJump = true;
-            jumpCount++;
-        }
-
-        Debug.Log("Grounded: " + grounded + "; Begin Jump: " + beginJump + "; Jumping: " + jumping);
-        if (grounded && !beginJump && !jumping)
-        {
-            //we're on the ground, we're not jumping, make sure our collision material is correct
-            if (collider.sharedMaterial != originalMaterial)
+            if (grounded) {
+                jumpCount = 0;
+            }
+            
+            // If the jump button is pressed and the player is grounded then the player should jump.
+            if (gameState.acceptGameInput && rwPlayer.GetButtonDown("Jump")
+            && jumpCount < movementConfigs.maxJumps
+            && !state.IsStunned())
             {
-                collider.sharedMaterial = originalMaterial;
+                beginJump = true;
+                jumpCount++;
+            }
 
-                // seems to be a bug that currently requires the collider to be reset to refresh material
-                collider.enabled = !collider.enabled;
-                collider.enabled = !collider.enabled;
+            if (grounded && !beginJump && !jumping)
+            {
+                //we're on the ground, we're not jumping, make sure our collision material is correct
+                if (collider.sharedMaterial != originalMaterial)
+                {
+                    collider.sharedMaterial = originalMaterial;
+
+                    // seems to be a bug that currently requires the collider to be reset to refresh material
+                    collider.enabled = !collider.enabled;
+                    collider.enabled = !collider.enabled;
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
-        if (timedInvuln && state.IsInvulnerable() && Time.time > invulnTime)
-        {
-            timedInvuln = false;
-            state.SetInvulnerable(false);
-            GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        }
-        if (state.IsStunned())
-        {
-            if (Time.time > stunTime)
+        if (!state.IsFrozen()) {
+            if (state.IsInvulnerable() && Time.time > state.invulnerableTime)
             {
-                UnStun();
+                state.SetInvulnerable(false);
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
-        }
-        else
-        {
-            HandleMovementInput();
+            if (state.IsStunned())
+            {
+                if (Time.time > state.stunTime)
+                {
+                    UnStun();
+                }
+            }
+            else
+            {
+                HandleMovementInput();
+            }
+        } else {
+            CheckUnfrozen();
         }
     }
 
+    public void CheckUnfrozen()
+    {
+        if (state.frozenTime < Time.time) {
+            state.SetState(PlayerState.State.idle);
+            rigidBody.gravityScale = state.gravityScaleHold;
+            rigidBody.velocity = state.velocityHold;
+        }
+    }
+
+    public void Freeze(float frozenTime)
+    {
+        state.frozenTime = Time.time + frozenTime;
+        state.SetState(PlayerState.State.frozen);
+        state.velocityHold = rigidBody.velocity;
+        rigidBody.velocity = Vector2.zero;
+        state.gravityScaleHold = rigidBody.gravityScale;
+        rigidBody.gravityScale = 0;
+        // Need to increase timers by the freeze time
+        // so they continue as if nothing happened
+        startJumpTime += frozenTime;
+        state.invulnerableTime += frozenTime;
+
+        PlayerAttack pa = GetComponent<PlayerAttack>();
+        if (pa != null)
+        {
+            pa.Freeze(frozenTime);
+        }
+    }
 
     public void UnStun()
     {
@@ -187,11 +216,10 @@ public class PlayerMovement : MonoBehaviour
     
     public void Stun(Vector2 direction)
     {
-        stunTime = Time.time + stun.duration;
-        invulnTime = Time.time + stun.invulnerabilityDuration;
+        state.stunTime = Time.time + stun.duration;
+        state.invulnerableTime = Time.time + stun.invulnerabilityDuration;
         jumping = false;
         state.SetInvulnerable(true);
-        timedInvuln = true;
         state.SetState(PlayerState.State.stunned);
         float velocityX = rigidBody.velocity.x;
         float velocityY = rigidBody.velocity.y;

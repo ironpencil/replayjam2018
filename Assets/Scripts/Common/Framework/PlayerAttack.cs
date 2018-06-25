@@ -31,26 +31,34 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((state.IsAttacking() && completeTime <= Time.time) 
-        || state.IsStunned())
-        {
-            StopAttack();
-        }
+        if (!state.IsFrozen()) {
+            if ((state.IsAttacking() && completeTime <= Time.time) 
+            || state.IsStunned())
+            {
+                StopAttack();
+            }
 
-        if(gameState.acceptGameInput
-            && !state.IsAttacking()
-            && !state.IsStunned()
-            && rwPlayer.GetButtonDown("Attack") 
-            && Time.time > recoveryTime)
-        {
-            // If we're not in blackout, or you are the blackout
-            // player, then attack. If you're not the blackout
-            // player, may Heaven help you
-            if (!blackoutState.InBlackout() 
-            || blackoutState.blackoutPlayer == player.playerId) {
-                StartAttack();
+            if(gameState.acceptGameInput
+                && !state.IsAttacking()
+                && !state.IsStunned()
+                && rwPlayer.GetButtonDown("Attack") 
+                && Time.time > recoveryTime)
+            {
+                // If we're not in blackout, or you are the blackout
+                // player, then attack. If you're not the blackout
+                // player, may Heaven help you
+                if (!blackoutState.InBlackout() 
+                || blackoutState.blackoutPlayer == player.playerId) {
+                    StartAttack();
+                }
             }
         }
+    }
+
+    public void Freeze(float freezeDuration)
+    {
+        completeTime += freezeDuration;
+        recoveryTime += freezeDuration;
     }
 
     void StartAttack()

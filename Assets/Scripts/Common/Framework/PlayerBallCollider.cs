@@ -19,7 +19,8 @@ public class PlayerBallCollider : MonoBehaviour
 
     public void BallEnter(BallController bc)
     {
-        if (!state.IsInvulnerable() 
+        if (!state.IsInvulnerable()
+        && !state.IsFrozen()
         && player.playerId != colorState.GetBallOwner(bc.color)) {
             player.ChangeHealth(-1);
 		    playerDamagedEvent.Raise();

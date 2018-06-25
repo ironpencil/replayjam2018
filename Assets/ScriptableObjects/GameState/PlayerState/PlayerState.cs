@@ -11,12 +11,20 @@ public class PlayerState : ScriptableObject {
 	[SerializeField]
 	private bool isInvulnerable = false;
 
+	public float invulnerableTime;
+	public float frozenTime;
+	public float stunTime;
+
+	public float gravityScaleHold;
+	public Vector2 velocityHold;
+
 	public enum State {
 		idle,
 		moving,
 		jumping,
 		falling,
-		stunned
+		stunned,
+		frozen
 	}
 
 	public void OnEnable()
@@ -51,6 +59,10 @@ public class PlayerState : ScriptableObject {
 
 	public bool IsInvulnerable() {
 		return isInvulnerable;
+	}
+
+	public bool IsFrozen() {
+		return this.value == State.frozen;
 	}
 
 	public void SetState(State nState) {

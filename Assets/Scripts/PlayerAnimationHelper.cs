@@ -48,6 +48,9 @@ public class PlayerAnimationHelper : MonoBehaviour {
                 case PlayerState.State.stunned:
                     playerAnimator.SetTrigger(animConfig.doStunParam);
                     break;
+                case PlayerState.State.frozen:
+                    // TODO not sure how to stop the animation
+                    break;
                 default:
                     break;
             }

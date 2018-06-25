@@ -7,15 +7,21 @@ public class AttackBehavior : MonoBehaviour {
 	public int hitCount = 0;
 	public List<Collider2D> hitList;
 	public PlayerData playerData;
+	public PlayerState state;
+	public PlayerMovement playerMovement;
 	public AudioSource attackAudioSource;
 	public AudioEvent attackAudioEvent;
     public AudioSource hitAudioSource;
     public AudioEvent hitAudioEvent;
+	public AttackConfig attackConfig;
 
 	void Start()
 	{
 		hitList = new List<Collider2D>();
 		playerData = GetComponentInParent<PlayerData>();
+		playerMovement = GetComponentInParent<PlayerMovement>();
+		attackConfig = GetComponentInParent<PlayerAttack>().attackConfig;
+		state = playerMovement.state;
 	}
 
 	public void StartAttack(Vector2 attackAngle)
@@ -25,11 +31,6 @@ public class AttackBehavior : MonoBehaviour {
 		hitList = new List<Collider2D>();
 
 		PlayAudioEvent(attackAudioEvent, attackAudioSource);
-	}
-
-	public void StopAttack()
-	{
-
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
@@ -50,10 +51,15 @@ public class AttackBehavior : MonoBehaviour {
 	void HandleHit(Collider2D collider)
 	{
 		BallController bc = collider.GetComponent<BallController>();
-		if (bc != null && !hitList.Contains(collider)) {
+		if (bc != null 
+		&& !hitList.Contains(collider)
+		&& !state.IsFrozen()
+		&& !state.IsStunned()) {
 			hitList.Add(collider);
 			playerData.AddBallColor(bc.color);
 			bc.Hit(playerData.playerId, attackAngle);
+			bc.Freeze(attackConfig.hitFreezeLength);
+			playerMovement.Freeze(attackConfig.hitFreezeLength);
 			hitCount++;
 			PlayAudioEvent(hitAudioEvent, hitAudioSource);
 		}
