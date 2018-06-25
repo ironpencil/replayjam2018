@@ -1034,6 +1034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 734754556}
   - component: {fileID: 734754557}
+  - component: {fileID: 734754558}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -1099,6 +1100,82 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &734754558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734754555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559d361984b3712478e0e655d520a068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: 0
+  maxX: 0.1
+  minY: -0.1
+  maxY: 0
+  wobbleTime: 0.5
+  curveX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 1.0062485
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4836322
+      value: 0.51883066
+      inSlope: 3.729322
+      outSlope: 3.729322
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.104905896
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9874878
+      value: -0.006248474
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  startAtTime: 0.2
+  wobbleOnStart: 1
+  loop: 1
 --- !u!1 &751735092
 GameObject:
   m_ObjectHideFlags: 0
@@ -3205,6 +3282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841824133}
   - component: {fileID: 1841824134}
+  - component: {fileID: 1841824135}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -3270,6 +3348,82 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1841824135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841824132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559d361984b3712478e0e655d520a068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: 0
+  maxX: 0.1
+  minY: -0.1
+  maxY: 0
+  wobbleTime: 0.5
+  curveX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 1.0062485
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4836322
+      value: 0.51883066
+      inSlope: 3.729322
+      outSlope: 3.729322
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.104905896
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9874878
+      value: -0.006248474
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  startAtTime: 0
+  wobbleOnStart: 1
+  loop: 1
 --- !u!4 &1890568066 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4446548501368234, guid: dd00b945fc6b168449a4bbfb2532899c,
