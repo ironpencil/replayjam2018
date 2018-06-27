@@ -13,3 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStateChangedEvent: {fileID: 11400000, guid: 6c181be6a3e98dc42a470c3848198c01,
     type: 2}
+  isAttacking: 0
+  isInvulnerable: 0
+  invulnerableTime: 189.208
+  frozenTime: 22.795
+  stunTime: 188.458
+  gravityScaleHold: 1
+  velocityHold: {x: 3.691526, y: 11.883302}
+  value: 0
