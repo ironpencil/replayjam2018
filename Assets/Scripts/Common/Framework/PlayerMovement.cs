@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator FlashSpriteForDuration(float duration, float frequency)
     {
-        List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>().ToList();
+        List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>(true).ToList();
         List<Color> colors = sprites.Select(s => s.color).ToList();
 
         Color flashColor = Color.clear;
