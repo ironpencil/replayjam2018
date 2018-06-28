@@ -6,10 +6,6 @@ using UnityEngine;
 public class ParticlesConfig : ScriptableObject {
 
     public Color color;
-    public float startLifetime;
-    public float emissionRate;
-
-    public ParticleSystemSimulationSpace simulationSpace;
 
     [SortingLayer]
     public int sortingLayer;

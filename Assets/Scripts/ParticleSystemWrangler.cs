@@ -9,10 +9,15 @@ public class ParticleSystemWrangler : MonoBehaviour {
     public ParticlesConfig tintedConfig;
     public ParticlesConfig whiteConfig;
 
+    public ParticleEmissionConfig defaultEmissionConfig;
+    public ParticleEmissionConfig blackoutEmissionConfig;
+
     public bool playOnAwake = true;
 
     private ParticleSystem tintedParticles;
     private ParticleSystem whiteParticles;
+
+    private ParticleEmissionConfig emissionConfig;
 
     private uint randomSeed;
 
@@ -23,8 +28,9 @@ public class ParticleSystemWrangler : MonoBehaviour {
         tintedParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
         whiteParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
 
-        ConfigureParticleSystem(tintedParticles, tintedConfig);
-        ConfigureParticleSystem(whiteParticles, whiteConfig);
+        emissionConfig = defaultEmissionConfig;
+
+        ConfigureParticleSystems();
 
         if (playOnAwake)
         {
@@ -35,30 +41,71 @@ public class ParticleSystemWrangler : MonoBehaviour {
 
     private void ConfigureParticleSystem(ParticleSystem ps, ParticlesConfig config)
     {
-        var main = ps.main;
-        var emission = ps.emission;
-        var renderer = ps.GetComponent<ParticleSystemRenderer>();
+        if (ps != null && config != null)
+        {
+            var main = ps.main;
+            var emission = ps.emission;
+            var renderer = ps.GetComponent<ParticleSystemRenderer>();
 
-        main.startLifetime = config.startLifetime;
-        main.simulationSpace = config.simulationSpace;
-        main.startColor = config.color;
+            main.startColor = config.color;
 
-        emission.rateOverTime = config.emissionRate;
+            main.startLifetime = emissionConfig.startLifetime;
+            main.simulationSpace = emissionConfig.simulationSpace;
+            main.startSize = emissionConfig.startSize;
+            main.startSpeed = emissionConfig.startSpeed;
+            main.gravityModifier = emissionConfig.gravityModifier;
 
-        renderer.sortingLayerID = config.sortingLayer;
-        renderer.sortingOrder = config.orderInLayer;
-        renderer.material = config.renderMaterial;
+            emission.rateOverTime = emissionConfig.emissionRate;
 
-        ps.randomSeed = randomSeed;
+            renderer.sortingLayerID = config.sortingLayer;
+            renderer.sortingOrder = config.orderInLayer;
+            renderer.material = config.renderMaterial;
+
+            if (!ps.isPlaying)
+            {
+                ps.randomSeed = randomSeed;
+            }
+        }
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void ConfigureParticleSystems(bool andRestart = false)
+    {
+        ConfigureParticleSystem(tintedParticles, tintedConfig);
+        ConfigureParticleSystem(whiteParticles, whiteConfig);
+
+        if (andRestart)
+        {
+            RestartParticleSystems();
+        }
+    }
+
+    [ContextMenu("Restart Particle Systems")]
+    public void RestartParticleSystems()
+    {
+        tintedParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+
+        tintedParticles.Play();
+        whiteParticles.Play();
+    }
+
+    [ContextMenu("Configure and Restart")]
+    public void ReconfigAndRestart()
+    {
+        ConfigureParticleSystems(true);
+    }
+
+    [ContextMenu("Start Blackout")]
+    public void OnStartBlackout()
+    {
+        emissionConfig = blackoutEmissionConfig;
+        ReconfigAndRestart();
+    }
+
+    [ContextMenu("End Blackout")]
+    public void OnEndBlackout()
+    {
+        emissionConfig = defaultEmissionConfig;
+        ReconfigAndRestart();
+    }
 }

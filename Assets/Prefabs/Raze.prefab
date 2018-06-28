@@ -978,10 +978,13 @@ MonoBehaviour:
   hitCount: 0
   hitList: []
   playerData: {fileID: 114406026357819074}
+  state: {fileID: 0}
+  playerMovement: {fileID: 0}
   attackAudioSource: {fileID: 82428972463006904}
   attackAudioEvent: {fileID: 11400000, guid: 54fd411f955cded4db0da34289f6937a, type: 2}
   hitAudioSource: {fileID: 82823564821878230}
   hitAudioEvent: {fileID: 11400000, guid: d757d06ca54addb46ace2a6baab49dde, type: 2}
+  attackConfig: {fileID: 0}
 --- !u!114 &114406026357819074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1121,8 +1124,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -228275837
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8dd321e2323c5bf4db446b6f917f431e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1211,8 +1214,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -228275837
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 32e69458e78cc1d498a9d420d2b16764, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1256,8 +1259,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -228275837
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 190dfe968f97b374ba71bb750ad9aeb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

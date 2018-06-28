@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Name: CyanFlame
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0, b: 0, a: 1}
-  startLifetime: 0.3
-  emissionRate: 150
+  startLifetime: {fileID: 11400000, guid: 129521c94f5956746ac2c47fe39fa4e6, type: 2}
+  startSpeed: {fileID: 11400000, guid: 4be3a04da4485de479f0c2008bba29e1, type: 2}
+  startSize: {fileID: 11400000, guid: 1602ef5c9ece76d49afd96d4b80ffec0, type: 2}
+  gravityModifier: {fileID: 11400000, guid: 3fa5d1dfdca3b8d4db3e66e193590204, type: 2}
+  emissionRate: {fileID: 11400000, guid: 93b7a499c77dfaf45ba7966ce28a669c, type: 2}
   simulationSpace: 1
   sortingLayer: 2141587111
   orderInLayer: -50

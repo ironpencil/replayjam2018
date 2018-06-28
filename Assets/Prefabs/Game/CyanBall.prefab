@@ -88,6 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4591308751461618}
   - component: {fileID: 114659014164067088}
+  - component: {fileID: 114451423856860274}
+  - component: {fileID: 114962487773275344}
   m_Layer: 10
   m_Name: ParticleEffects
   m_TagString: Untagged
@@ -134,7 +136,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000416753938000}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -373,6 +375,34 @@ MonoBehaviour:
   frozenTime: 0
   ballHitWall: {fileID: 11400000, guid: 52d2bddecc4cc134b902cd0bd521d015, type: 2}
   ballAudioSource: {fileID: 82105397039943478}
+--- !u!114 &114451423856860274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531743973202382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114659014164067088}
+        m_MethodName: OnStartBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114527799707972914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,7 +435,39 @@ MonoBehaviour:
     type: 2}
   tintedConfig: {fileID: 11400000, guid: 94d813d2806f1e145b82ca4d8a9806a0, type: 2}
   whiteConfig: {fileID: 11400000, guid: 9984aa2587a97244ca9e68e1703b6199, type: 2}
+  defaultEmissionConfig: {fileID: 11400000, guid: 999e88ea4e34554438c659f965cd0bde,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: ba6d03c79550d264a8950d0ced13c0d1,
+    type: 2}
   playOnAwake: 1
+--- !u!114 &114962487773275344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531743973202382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114659014164067088}
+        m_MethodName: OnEndBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!198 &198502340711994632
 ParticleSystem:
   m_ObjectHideFlags: 1
