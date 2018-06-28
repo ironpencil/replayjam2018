@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private PhysicsMaterial2D originalMaterial;
     private Collider2D collider;
 
+    private PlayerState.State recoverState = PlayerState.State.idle;
+
     public AudioSource movementAudioSource;
     public AudioEvent jumpAudioEvent;
     public AudioEvent landAudioEvent;
@@ -105,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     public void CheckUnfrozen()
     {
         if (state.frozenTime < Time.time) {
-            state.SetState(PlayerState.State.idle);
+            state.SetState(recoverState);
             rigidBody.gravityScale = state.gravityScaleHold;
             rigidBody.velocity = state.velocityHold;
         }
@@ -114,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
     public void Freeze(float frozenTime)
     {
         state.frozenTime = Time.time + frozenTime;
+        recoverState = state.GetState();
         state.SetState(PlayerState.State.frozen);
         state.velocityHold = rigidBody.velocity;
         rigidBody.velocity = Vector2.zero;
