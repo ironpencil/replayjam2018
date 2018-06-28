@@ -10,18 +10,29 @@ public class PlayerAnimationHelper : MonoBehaviour {
     public Animator playerAnimator;
     public PlayerAnimConfig animConfig;
     public PlayerState playerState;
+    public RuntimeAnimatorController defaultAnimController;
+    public RuntimeAnimatorController blackoutAnimController;
+    public PlayerData playerData;
+    public BlackoutState blackoutState;
 
     private int previousFacing = 0;
 
+    //private Dictionary<string, bool> boolAnimParams = new Dictionary<string, bool>();
+
     [SerializeField]
     private PlayerState.State currentState = PlayerState.State.idle;
+
+    private bool resetBlackoutAnimations = false;
 
     private Rigidbody2D rb;
 
     // Use this for initialization
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();
-	}
+        //boolAnimParams[animConfig.isIdleParam] = false;
+        //boolAnimParams[animConfig.isRunningParam] = false;
+        //boolAnimParams[animConfig.isJumpingParam] = false;
+    }
 
     public void OnStateChanged()
     {
@@ -29,23 +40,23 @@ public class PlayerAnimationHelper : MonoBehaviour {
 
         if (newState != currentState)
         {
-            playerAnimator.SetBool(animConfig.isIdleParam, false);
-            playerAnimator.SetBool(animConfig.isRunningParam, false);
-            playerAnimator.SetBool(animConfig.isJumpingParam, false);
+            SetBoolAnimParam(animConfig.isIdleParam, false);
+            SetBoolAnimParam(animConfig.isRunningParam, false);
+            SetBoolAnimParam(animConfig.isJumpingParam, false);
 
             switch (newState)
             {
                 case PlayerState.State.idle:
-                    playerAnimator.SetBool(animConfig.isIdleParam, true);
+                    SetBoolAnimParam(animConfig.isIdleParam, true);
                     break;
                 case PlayerState.State.moving:
-                    playerAnimator.SetBool(animConfig.isRunningParam, true);
+                    SetBoolAnimParam(animConfig.isRunningParam, true);
                     break;
                 case PlayerState.State.jumping:
-                    playerAnimator.SetBool(animConfig.isJumpingParam, true);
+                    SetBoolAnimParam(animConfig.isJumpingParam, true);
                     break;
                 case PlayerState.State.falling:
-                    playerAnimator.SetBool(animConfig.isJumpingParam, true);
+                    SetBoolAnimParam(animConfig.isJumpingParam, true);
                     break;
                 case PlayerState.State.stunned:
                     playerAnimator.SetTrigger(animConfig.doStunParam);
@@ -61,9 +72,45 @@ public class PlayerAnimationHelper : MonoBehaviour {
 
         //playerAnimator.SetBool(animConfig.isIdleParam, newState == PlayerState.State.idle);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void SetBoolAnimParam(string param, bool value)
+    {
+        //boolAnimParams[param] = value;
+        playerAnimator.SetBool(param, value);
+    }
+
+    public void OnStartBlackout()
+    {
+        Debug.Log("Start Blackout");
+        if (blackoutState.blackoutPlayer != playerData.playerId)
+        {
+            resetBlackoutAnimations = true;
+            ShowBlackoutAnimations();
+        }
+    }
+
+    public void OnEndBlackout()
+    {
+        Debug.Log("End Blackout");
+        if (resetBlackoutAnimations)
+        {
+            ShowDefaultAnimations();
+        }
+    }
+
+    public void ShowDefaultAnimations()
+    {
+        playerAnimator.runtimeAnimatorController = defaultAnimController;
+    }
+
+    public void ShowBlackoutAnimations()
+    {
+        Debug.Log("Switch to blackout animations");
+        playerAnimator.runtimeAnimatorController = blackoutAnimController;
+    }
+
+    // Update is called once per frame
+    void Update () {
         UpdateImageFacing();
         UpdateRunSpeed();
 	}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RazeAnimatorController
+  m_Controller: {fileID: 9100000, guid: 852a886dde16de24e85893080c0da417, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 989120d0c3a4a9848933fd51745b81b0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 050be037eea4fac458fb23c3f3062cb6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dca80e31d63755e48b847e3a5b72610d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 80cd137eeb0ea1b4895eeacefe71c383, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7d2a5a3097270ea48a5792d332745625, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2801382709e78394289e97a26a90dd2d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 593ba8cd3f20e8445b8c9628e45fc822, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 90270de9f8e77a743b9f0b6232b21abf, type: 2}

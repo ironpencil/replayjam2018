@@ -7,4 +7,5 @@ public class StunConfig : ScriptableObject {
 	public float duration;
 	public float strength;
 	public float invulnerabilityDuration;
+    public float invulnFlashFrequency;
 }

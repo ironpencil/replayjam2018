@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Rewired;
 using UnityEngine;
 
@@ -86,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             if (state.IsInvulnerable() && Time.time > state.invulnerableTime)
             {
                 state.SetInvulnerable(false);
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
             if (state.IsStunned())
             {
@@ -137,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
     public void UnStun()
     {
         state.SetState(PlayerState.State.idle);
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        //GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 
     private void HandleMovementInput()
@@ -241,9 +242,41 @@ public class PlayerMovement : MonoBehaviour
         }
         rigidBody.velocity = new Vector2(velocityX, velocityY);
         rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
-        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        StartCoroutine(FlashSpriteForDuration(stun.invulnerabilityDuration, stun.invulnFlashFrequency));
         PlayAudioEvent(stunAudioEvent, movementAudioSource);
     }
+
+    private IEnumerator FlashSpriteForDuration(float duration, float frequency)
+    {
+        List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>().ToList();
+        List<Color> colors = sprites.Select(s => s.color).ToList();
+
+        Color flashColor = Color.clear;
+
+        float minWaitTime = 0.01f;
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+
+        while (Time.time < endTime)
+        {
+            foreach (var sprite in sprites)
+            {
+                sprite.color = flashColor;
+            }
+
+            float waitTime = Mathf.Max(minWaitTime, frequency * Mathf.InverseLerp(endTime, startTime, Time.time));
+            yield return new WaitForSeconds(waitTime);
+
+            for (int i = 0; i < sprites.Count; i++)
+            {
+                sprites[i].color = colors[i];
+            }
+
+            waitTime = Mathf.Max(minWaitTime, frequency * Mathf.InverseLerp(endTime, startTime, Time.time));
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+
     private bool CanAddJumpForce(float jumpDuration)
     {
         //if they stopped pressing Jump, stop jumping
