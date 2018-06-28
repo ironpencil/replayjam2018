@@ -94,4 +94,11 @@ public class PlayerState : ScriptableObject {
 
 	[SerializeField]
 	private State value;
+
+    [ContextMenu("Make Invulnerable")]
+    private void MakeInvulnerable()
+    {
+        invulnerableTime = float.MaxValue;
+        isInvulnerable = true;
+    }
 }

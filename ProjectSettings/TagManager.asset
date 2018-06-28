@@ -44,11 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 4066691459
+  - name: Blending Particle Effects
+    uniqueID: 2590375149
     locked: 0
   - name: Ball
     uniqueID: 2141587111
+    locked: 0
+  - name: Player
+    uniqueID: 4066691459
     locked: 0
   - name: Foreground
     uniqueID: 2431388827

@@ -15,9 +15,9 @@ MonoBehaviour:
     type: 2}
   isAttacking: 0
   isInvulnerable: 0
-  invulnerableTime: 189.208
-  frozenTime: 22.795
-  stunTime: 188.458
+  invulnerableTime: 3.4028235e+38
+  frozenTime: 1.0181999
+  stunTime: 94.3034
   gravityScaleHold: 1
-  velocityHold: {x: 3.691526, y: 11.883302}
+  velocityHold: {x: 10.398943, y: 0.8613031}
   value: 0

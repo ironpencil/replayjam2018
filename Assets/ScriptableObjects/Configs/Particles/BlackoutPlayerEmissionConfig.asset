@@ -8,7 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a18d59609235146adfd16df0e2b42b, type: 3}
-  m_Name: BlackoutStartEvent
+  m_Script: {fileID: 11500000, guid: 67bc947a32310114492538ac24b203e6, type: 3}
+  m_Name: BlackoutPlayerEmissionConfig
   m_EditorClassIdentifier: 
-  listeners: []
+  startLifetime: 0.4
+  startSpeed: 3
+  startSize: 2
+  gravityModifier: -3
+  emissionRate: 600
+  simulationSpace: 1

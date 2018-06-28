@@ -8,13 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad01cbb2ea57894f87b4cbe79afb345, type: 3}
-  m_Name: WhiteFlame
+  m_Script: {fileID: 11500000, guid: 67bc947a32310114492538ac24b203e6, type: 3}
+  m_Name: DefaultPlayerEmissionConfig 1
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
-  startLifetime: 0.3
+  startLifetime: 0.25
+  startSpeed: 2.5
+  startSize: 1.25
+  gravityModifier: -2.5
   emissionRate: 150
   simulationSpace: 1
-  sortingLayer: 2141587111
-  orderInLayer: -51
-  renderMaterial: {fileID: 2100000, guid: 9cf1ba8411e3e214d92092b7a1ab2e12, type: 2}
