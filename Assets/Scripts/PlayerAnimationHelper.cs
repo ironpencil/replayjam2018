@@ -29,21 +29,23 @@ public class PlayerAnimationHelper : MonoBehaviour {
 
         if (newState != currentState)
         {
+            playerAnimator.SetBool(animConfig.isIdleParam, false);
+            playerAnimator.SetBool(animConfig.isRunningParam, false);
+            playerAnimator.SetBool(animConfig.isJumpingParam, false);
+
             switch (newState)
             {
                 case PlayerState.State.idle:
-                    playerAnimator.SetTrigger(animConfig.doIdleParam);
+                    playerAnimator.SetBool(animConfig.isIdleParam, true);
                     break;
                 case PlayerState.State.moving:
-                    playerAnimator.SetTrigger(animConfig.doRunParam);
+                    playerAnimator.SetBool(animConfig.isRunningParam, true);
                     break;
                 case PlayerState.State.jumping:
-                    if (currentState != PlayerState.State.falling)
-                    {
-                        playerAnimator.SetTrigger(animConfig.doJumpParam);
-                    }
+                    playerAnimator.SetBool(animConfig.isJumpingParam, true);
                     break;
                 case PlayerState.State.falling:
+                    playerAnimator.SetBool(animConfig.isJumpingParam, true);
                     break;
                 case PlayerState.State.stunned:
                     playerAnimator.SetTrigger(animConfig.doStunParam);
@@ -56,6 +58,8 @@ public class PlayerAnimationHelper : MonoBehaviour {
             }
             currentState = newState;
         }
+
+        //playerAnimator.SetBool(animConfig.isIdleParam, newState == PlayerState.State.idle);
     }
 	
 	// Update is called once per frame
