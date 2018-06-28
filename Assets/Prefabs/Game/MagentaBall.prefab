@@ -412,6 +412,7 @@ MonoBehaviour:
   blackoutEmissionConfig: {fileID: 11400000, guid: ba6d03c79550d264a8950d0ced13c0d1,
     type: 2}
   playOnAwake: 1
+  shouldPlay: 1
 --- !u!114 &114823790430486808
 MonoBehaviour:
   m_ObjectHideFlags: 1

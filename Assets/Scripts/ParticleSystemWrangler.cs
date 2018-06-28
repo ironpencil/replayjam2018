@@ -21,6 +21,9 @@ public class ParticleSystemWrangler : MonoBehaviour {
 
     private uint randomSeed;
 
+    [SerializeField]
+    private bool shouldPlay = false;
+
     private void Awake()
     {
         randomSeed = (uint) Random.Range(0, uint.MaxValue);
@@ -34,8 +37,10 @@ public class ParticleSystemWrangler : MonoBehaviour {
 
         if (playOnAwake)
         {
-            tintedParticles.Play();
-            whiteParticles.Play();
+            Play();
+        } else
+        {
+            Stop();
         }
     }
 
@@ -61,51 +66,75 @@ public class ParticleSystemWrangler : MonoBehaviour {
             renderer.sortingOrder = config.orderInLayer;
             renderer.material = config.renderMaterial;
 
-            if (!ps.isPlaying)
+            if (ps.randomSeed != randomSeed)
             {
-                ps.randomSeed = randomSeed;
+                if (ps.isPlaying)
+                {
+                    ps.Stop();
+                    ps.randomSeed = randomSeed;
+                    ps.Play();
+                }
+                else
+                {
+                    ps.randomSeed = randomSeed;
+                }
             }
         }
     }
 
-    public void ConfigureParticleSystems(bool andRestart = false)
+    public void ConfigureParticleSystems()
     {
         ConfigureParticleSystem(tintedParticles, tintedConfig);
         ConfigureParticleSystem(whiteParticles, whiteConfig);
-
-        if (andRestart)
-        {
-            RestartParticleSystems();
-        }
-    }
-
-    [ContextMenu("Restart Particle Systems")]
-    public void RestartParticleSystems()
-    {
-        tintedParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-        whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-
-        tintedParticles.Play();
-        whiteParticles.Play();
-    }
-
-    [ContextMenu("Configure and Restart")]
-    public void ReconfigAndRestart()
-    {
-        ConfigureParticleSystems(true);
     }
 
     [ContextMenu("Start Blackout")]
     public void OnStartBlackout()
     {
         emissionConfig = blackoutEmissionConfig;
-        ReconfigAndRestart();
+        ConfigureParticleSystems();
+
+        SetPlaying(shouldPlay);
     }
 
     [ContextMenu("End Blackout")]
     public void OnEndBlackout()
     {
         emissionConfig = defaultEmissionConfig;
-        ReconfigAndRestart();
+        ConfigureParticleSystems();
+
+        SetPlaying(shouldPlay);
+    }
+
+    public void Stop()
+    {
+        shouldPlay = false;
+        tintedParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+    }
+
+    public void Play()
+    {
+        shouldPlay = true;
+        if (!tintedParticles.isPlaying)
+        {
+            tintedParticles.Play();
+        }
+
+        if (!whiteParticles.isPlaying)
+        {
+            whiteParticles.Play();
+        }
+    }
+
+    public void SetPlaying(bool shouldPlay)
+    {
+        if (shouldPlay)
+        {
+            Play();
+        } else
+        {
+            Stop();
+        }
     }
 }

@@ -130,6 +130,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1442689788978790
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4892574515545310}
+  - component: {fileID: 114251514375799080}
+  - component: {fileID: 114795857383236528}
+  - component: {fileID: 114483377161011108}
+  m_Layer: 10
+  m_Name: MagentaFlame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1557458225971444
 GameObject:
   m_ObjectHideFlags: 1
@@ -141,6 +159,40 @@ GameObject:
   - component: {fileID: 82671622104072424}
   m_Layer: 9
   m_Name: MovementAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1561102496144238
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4829132109156344}
+  - component: {fileID: 114387001803798158}
+  - component: {fileID: 114876057398528976}
+  - component: {fileID: 114133551412243800}
+  m_Layer: 10
+  m_Name: YellowFlame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1600633622607158
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4655092191169460}
+  - component: {fileID: 114554658411837298}
+  m_Layer: 9
+  m_Name: ParticleController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +272,24 @@ GameObject:
   - component: {fileID: 212260967988055754}
   m_Layer: 9
   m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1819019190848044
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4984799227793564}
+  - component: {fileID: 114744259572692696}
+  - component: {fileID: 114641609671148150}
+  - component: {fileID: 114161657261932720}
+  m_Layer: 10
+  m_Name: CyanFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,6 +447,7 @@ Transform:
   - {fileID: 4082299752364372}
   - {fileID: 4574316643819154}
   - {fileID: 4090381669510618}
+  - {fileID: 4655092191169460}
   m_Father: {fileID: 4234802983861126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -495,6 +566,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4234802983861126}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4655092191169460
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600633622607158}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.8, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4984799227793564}
+  - {fileID: 4892574515545310}
+  - {fileID: 4829132109156344}
+  m_Father: {fileID: 4215286006600310}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4829132109156344
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561102496144238}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4655092191169460}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4892574515545310
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442689788978790}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4655092191169460}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4984799227793564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819019190848044}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4655092191169460}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50333005070140204
 Rigidbody2D:
@@ -938,6 +1064,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114133551412243800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561102496144238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114387001803798158}
+        m_MethodName: OnEndBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114135718363775256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,6 +1103,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9052ef02c3bf2244cabe0afc8eadbb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114161657261932720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819019190848044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114744259572692696}
+        m_MethodName: OnEndBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114163923879461356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -963,6 +1145,27 @@ MonoBehaviour:
   playerDamagedEvent: {fileID: 11400000, guid: 21f457bdebf8d514fa0a552820a65959, type: 2}
   state: {fileID: 11400000, guid: 2b49a4c027b9cce4f945c947637a2df7, type: 2}
   colorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
+--- !u!114 &114251514375799080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442689788978790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561d610304fced478a6a8db39b9afc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 1372184705585382, guid: f754b9c3312b36e4c9fb98d4b0557ad5,
+    type: 2}
+  tintedConfig: {fileID: 11400000, guid: 36fb17a93958ef44985dcacf40ba372e, type: 2}
+  whiteConfig: {fileID: 11400000, guid: 9bb6ba0c997bd634a9b8d626f0f44225, type: 2}
+  defaultEmissionConfig: {fileID: 11400000, guid: 977e6e3fd4f415143ab63399927cfa44,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: 4734e57ad14781949907cb5b4b4bc0ae,
+    type: 2}
+  playOnAwake: 0
+  shouldPlay: 0
 --- !u!114 &114265960581439992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,6 +1188,27 @@ MonoBehaviour:
   hitAudioSource: {fileID: 82823564821878230}
   hitAudioEvent: {fileID: 11400000, guid: d757d06ca54addb46ace2a6baab49dde, type: 2}
   attackConfig: {fileID: 0}
+--- !u!114 &114387001803798158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561102496144238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561d610304fced478a6a8db39b9afc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 1372184705585382, guid: f754b9c3312b36e4c9fb98d4b0557ad5,
+    type: 2}
+  tintedConfig: {fileID: 11400000, guid: 8886a6ceffed2354c92e5e4bb875d9da, type: 2}
+  whiteConfig: {fileID: 11400000, guid: 9bb6ba0c997bd634a9b8d626f0f44225, type: 2}
+  defaultEmissionConfig: {fileID: 11400000, guid: 977e6e3fd4f415143ab63399927cfa44,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: 4734e57ad14781949907cb5b4b4bc0ae,
+    type: 2}
+  playOnAwake: 0
+  shouldPlay: 0
 --- !u!114 &114406026357819074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1000,6 +1224,84 @@ MonoBehaviour:
   playerHealth: {fileID: 11400000, guid: ee3fdb586a9afea4e8511b3b58863497, type: 2}
   colorState: {fileID: 11400000, guid: d32345c12b0e88e409d092c1fc398468, type: 2}
   playerDeathEvent: {fileID: 11400000, guid: 0d2a523e484c12b4b81b432c2cbb757a, type: 2}
+--- !u!114 &114483377161011108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442689788978790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114251514375799080}
+        m_MethodName: OnEndBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114554658411837298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600633622607158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99febe4e240706489935d97f05f0e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cyanWrangler: {fileID: 114744259572692696}
+  magentaWrangler: {fileID: 114251514375799080}
+  yellowWrangler: {fileID: 114387001803798158}
+  playerData: {fileID: 114406026357819074}
+  cyan: {fileID: 11400000, guid: 60000b90faf2c224991845a31bfe4529, type: 2}
+  magenta: {fileID: 11400000, guid: 90021da3dcb254e43bd1b58b16928ff8, type: 2}
+  yellow: {fileID: 11400000, guid: f2a51fbedd7f55047851d7b16bf44370, type: 2}
+  checkColorsOnUpdate: 1
+  playerColors:
+    playerNumber: 0
+    ballColors: []
+--- !u!114 &114641609671148150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819019190848044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114744259572692696}
+        m_MethodName: OnStartBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114725127079866720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1028,6 +1330,55 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114744259572692696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819019190848044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561d610304fced478a6a8db39b9afc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 1372184705585382, guid: f754b9c3312b36e4c9fb98d4b0557ad5,
+    type: 2}
+  tintedConfig: {fileID: 11400000, guid: 44b42f1366a997840972cd23646f52ad, type: 2}
+  whiteConfig: {fileID: 11400000, guid: 9bb6ba0c997bd634a9b8d626f0f44225, type: 2}
+  defaultEmissionConfig: {fileID: 11400000, guid: 977e6e3fd4f415143ab63399927cfa44,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: 4734e57ad14781949907cb5b4b4bc0ae,
+    type: 2}
+  playOnAwake: 0
+  shouldPlay: 0
+--- !u!114 &114795857383236528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442689788978790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114251514375799080}
+        m_MethodName: OnStartBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114798033986276820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,6 +1397,34 @@ MonoBehaviour:
   animConfig: {fileID: 11400000, guid: 1e8887f649c052f4e85314995af1442d, type: 2}
   playerState: {fileID: 11400000, guid: 2b49a4c027b9cce4f945c947637a2df7, type: 2}
   currentState: 0
+--- !u!114 &114876057398528976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561102496144238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114387001803798158}
+        m_MethodName: OnStartBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114926490209010594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1125,7 +1504,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228275837
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8dd321e2323c5bf4db446b6f917f431e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1170,7 +1549,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228275837
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4c813ef94f3980344855de94433a2934, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1215,7 +1594,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228275837
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 32e69458e78cc1d498a9d420d2b16764, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1260,7 +1639,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228275837
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 190dfe968f97b374ba71bb750ad9aeb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

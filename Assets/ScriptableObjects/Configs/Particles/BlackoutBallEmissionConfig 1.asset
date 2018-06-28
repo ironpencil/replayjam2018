@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67bc947a32310114492538ac24b203e6, type: 3}
-  m_Name: BlackoutBallEmissionConfig
+  m_Name: BlackoutBallEmissionConfig 1
   m_EditorClassIdentifier: 
   startLifetime: 1
-  startSpeed: 10
-  startSize: 2
-  gravityModifier: 0
-  emissionRate: 1000
+  startSpeed: 30
+  startSize: 5
+  gravityModifier: -2
+  emissionRate: 500
   simulationSpace: 1
