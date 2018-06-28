@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SkullkidAnimatorController
+  m_Controller: {fileID: 9100000, guid: 852a886dde16de24e85893080c0da417, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 989120d0c3a4a9848933fd51745b81b0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dc7319ef4d7ad954898ae28a42ee67fe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dca80e31d63755e48b847e3a5b72610d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4e23b23f2588b0e448fd4cb967dbacac, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7d2a5a3097270ea48a5792d332745625, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f24f842245661a04fa60447d9230d0f4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 593ba8cd3f20e8445b8c9628e45fc822, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2f3bafb3d73ad1e4786eb21f10ea79db, type: 2}

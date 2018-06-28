@@ -1,0 +1,12 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SkullkidAttackAnimatorController
+  m_Controller: {fileID: 9100000, guid: 26e8a21cca1bdcd4b8fd5f8f6f57c3a6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ce45d6f17cd7f7641bd3b184536e746d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dec6988652ef32b4f969f1fceec86ad2, type: 2}

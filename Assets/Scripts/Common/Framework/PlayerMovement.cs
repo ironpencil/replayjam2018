@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if (state.IsInvulnerable() && Time.time > state.invulnerableTime)
             {
                 state.SetInvulnerable(false);
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
             if (state.IsStunned())
             {
@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     public void UnStun()
     {
         state.SetState(PlayerState.State.idle);
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        //GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 
     private void HandleMovementInput()
@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
         }
         rigidBody.velocity = new Vector2(velocityX, velocityY);
         rigidBody.AddForce(direction * stun.strength, ForceMode2D.Impulse);
-        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        //GetComponentInChildren<SpriteRenderer>().color = Color.red;
         PlayAudioEvent(stunAudioEvent, movementAudioSource);
     }
     private bool CanAddJumpForce(float jumpDuration)
