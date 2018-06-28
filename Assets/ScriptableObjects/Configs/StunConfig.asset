@@ -14,3 +14,4 @@ MonoBehaviour:
   duration: 0.75
   strength: 15
   invulnerabilityDuration: 1.5
+  invulnFlashFrequency: 0.05

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RazeBlackoutAnimatorController
+  m_Controller: {fileID: 9100000, guid: 852a886dde16de24e85893080c0da417, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 989120d0c3a4a9848933fd51745b81b0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 103909bcf858a1e4f8b9f5ef56d34780, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dca80e31d63755e48b847e3a5b72610d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 36d324b659fc9ed4bb30311822d03803, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7d2a5a3097270ea48a5792d332745625, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 57d92544bf611fb49bfd8baf4ec3cf97, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 593ba8cd3f20e8445b8c9628e45fc822, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6e9ae2aeca56e144a8f13df7aa5e25a9, type: 2}
