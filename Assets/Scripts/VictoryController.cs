@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class VictoryController : MonoBehaviour {
 
-    public Text victoryText;
+    public Text victoryTextFront;
+    public Text victoryTextBack;
     public StringVariable victorName;
 
     private void OnEnable()
     {
-        victoryText.text = victorName.Value + " WINS!";
+        victoryTextFront.text = victorName.Value.ToLower() + "  wins!";
+        victoryTextBack.text = victorName.Value.ToLower() + "  wins!";
     }
 }
