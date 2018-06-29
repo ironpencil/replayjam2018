@@ -41,6 +41,7 @@ public class BallController : MonoBehaviour {
 
     public void MaintainVelocity()
     {
+        if (currentSpeed == 0.0f) { return; }
         Vector2 vel = rb.velocity;
 
         if (vel.sqrMagnitude != currentSpeed*currentSpeed)
