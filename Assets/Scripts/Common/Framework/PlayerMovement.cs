@@ -252,7 +252,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator FlashSpriteForDuration(float duration, float frequency)
     {
         List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>(true).ToList();
-        List<Color> colors = sprites.Select(s => s.color).ToList();
 
         Color flashColor = Color.clear;
 
@@ -268,15 +267,15 @@ public class PlayerMovement : MonoBehaviour
             }
 
             float waitTime = Mathf.Max(minWaitTime, frequency * Mathf.InverseLerp(endTime, startTime, Time.time));
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(frequency);
 
             for (int i = 0; i < sprites.Count; i++)
             {
-                sprites[i].color = colors[i];
+                sprites[i].color = Color.white;
             }
 
             waitTime = Mathf.Max(minWaitTime, frequency * Mathf.InverseLerp(endTime, startTime, Time.time));
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(frequency);
         }
     }
 
