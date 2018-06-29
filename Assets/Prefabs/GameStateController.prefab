@@ -260,6 +260,10 @@ MonoBehaviour:
   - {fileID: 1000416753938000, guid: f81cc40807a4ca34997132dcb7961e11, type: 2}
   - {fileID: 1236933840694482, guid: 9aa5613782c5b0f46a81b7094f7f98f5, type: 2}
   - {fileID: 1210467830307306, guid: dd00b945fc6b168449a4bbfb2532899c, type: 2}
+  jumperPrefabs:
+  - {fileID: 1670247907251852, guid: 7c513a82f68afa540941fc992e440167, type: 2}
+  - {fileID: 1461910506290800, guid: d00614a1f425819429b44668a1baf911, type: 2}
+  - {fileID: 1482763315770568, guid: 0d282760aeb00c44aa023dd8b9a8a1cd, type: 2}
   ballInstances:
   - {fileID: 0}
   - {fileID: 0}

@@ -9,6 +9,8 @@ public class Jumper : MonoBehaviour
 	public PlayerColorState colorState;
 	public List<Transform> players;
 	public Transform ball;
+    public ParticleSystemWrangler particleWrangler;
+
 	private PlayerParticleController ppc;
 
 	public JumperConfig config;
@@ -31,6 +33,7 @@ public class Jumper : MonoBehaviour
 					ppc.EnableColor(followColor);
 				}
 				target = null;
+                particleWrangler.Stop();
 			}
 		}
     }
@@ -38,9 +41,10 @@ public class Jumper : MonoBehaviour
 	public void ChangeTarget()
 	{
 		if (ppc != null) {
-			Debug.Log("Enabling color from jumper");
+			Debug.Log("Disabling color from jumper");
 			ppc.DisableColor(followColor);
 		}
+        particleWrangler.Play();
 		transform.parent = null;
 		int owner = colorState.GetBallOwner(followColor);
 		if (owner > -1) {

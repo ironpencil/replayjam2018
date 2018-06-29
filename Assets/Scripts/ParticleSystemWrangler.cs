@@ -106,6 +106,7 @@ public class ParticleSystemWrangler : MonoBehaviour {
         SetPlaying(shouldPlay);
     }
 
+    [ContextMenu("Stop")]
     public void Stop()
     {
         shouldPlay = false;
@@ -113,6 +114,7 @@ public class ParticleSystemWrangler : MonoBehaviour {
         whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
     }
 
+    [ContextMenu("Play")]
     public void Play()
     {
         shouldPlay = true;

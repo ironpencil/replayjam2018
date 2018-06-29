@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212566314736652314}
   - component: {fileID: 114591445877020970}
   - component: {fileID: 114326598340347372}
+  - component: {fileID: 114875882989939384}
   m_Layer: 0
   m_Name: Jumper
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995517960147198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.0248373, y: 0.4957088, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,6 +59,7 @@ MonoBehaviour:
   colorState: {fileID: 0}
   players: []
   ball: {fileID: 0}
+  particleWrangler: {fileID: 114875882989939384}
   config: {fileID: 11400000, guid: cffce711371b5724d94a74a926eb646b, type: 2}
 --- !u!114 &114591445877020970
 MonoBehaviour:
@@ -65,7 +67,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995517960147198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
   m_Name: 
@@ -87,6 +89,27 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114875882989939384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995517960147198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561d610304fced478a6a8db39b9afc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 1311131212745596, guid: 90b02e35ec3b4e64c9c55a1b7d8a1cb0,
+    type: 2}
+  tintedConfig: {fileID: 11400000, guid: e9344b78b8229f54fb51a7953acb4b93, type: 2}
+  whiteConfig: {fileID: 11400000, guid: 6dc08f6878f238149b453b408ad98fb3, type: 2}
+  defaultEmissionConfig: {fileID: 11400000, guid: e30895cce6852bb4b866d0e070c67fa8,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: e30895cce6852bb4b866d0e070c67fa8,
+    type: 2}
+  playOnAwake: 0
+  shouldPlay: 0
 --- !u!212 &212566314736652314
 SpriteRenderer:
   m_ObjectHideFlags: 1
