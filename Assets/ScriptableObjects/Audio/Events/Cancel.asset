@@ -9,11 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
-  m_Name: LandAE
+  m_Name: Cancel
   m_EditorClassIdentifier: 
-  clips: []
-  playRandom: 1
-  minVolume: 0.15
-  maxVolume: 0.2
-  minPitch: 0.6
-  maxPitch: 0.8
+  clips:
+  - {fileID: 8300000, guid: 95cfffd28dc04924db85929f5d52928b, type: 3}
+  playRandom: 0
+  minVolume: 0.95
+  maxVolume: 1
+  minPitch: 0.95
+  maxPitch: 1.05

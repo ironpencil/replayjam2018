@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
   m_Name: BallBounceAE
   m_EditorClassIdentifier: 
-  clips: []
-  minVolume: 0.204
-  maxVolume: 0.298
-  minPitch: 0.8
-  maxPitch: 1.11
+  clips:
+  - {fileID: 8300000, guid: d858f451fbb735d4582b7a5038776cb5, type: 3}
+  playRandom: 1
+  minVolume: 0.2
+  maxVolume: 0.3
+  minPitch: 1.1
+  maxPitch: 1.2

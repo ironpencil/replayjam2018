@@ -5,6 +5,8 @@ class SimpleAudioEvent : AudioEvent
 {
     public AudioClip[] clips;
 
+    public bool playRandom = true;
+
     [Range(0.0f, 1.0f)]
     public float minVolume = 1.0f;
     [Range(0.0f, 1.0f)]
@@ -18,9 +20,19 @@ class SimpleAudioEvent : AudioEvent
     public override void Play(AudioSource source) {
         if (clips.Length == 0) return;
 
-        AudioClip clip = clips[Random.Range(0, clips.Length)];
         source.volume = Random.Range(minVolume, maxVolume);
         source.pitch = Random.Range(minPitch, maxPitch);
-        source.PlayOneShot(clip);
+
+        if (playRandom)
+        {
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
+            source.PlayOneShot(clip);
+        } else
+        {
+            foreach (var clip in clips)
+            {
+                source.PlayOneShot(clip);
+            }
+        }
     }
 }

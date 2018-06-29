@@ -9,8 +9,12 @@ public class VictoryController : MonoBehaviour {
     public Text victoryTextBack;
     public StringVariable victorName;
 
+    public AudioEvent victorySound;
+    public AudioSource audioSource;
+
     private void OnEnable()
     {
+        victorySound.Play(audioSource);
         victoryTextFront.text = victorName.Value.ToLower() + "  wins!";
         victoryTextBack.text = victorName.Value.ToLower() + "  wins!";
     }
