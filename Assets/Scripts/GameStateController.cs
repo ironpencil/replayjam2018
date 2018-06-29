@@ -48,13 +48,16 @@ public class GameStateController : MonoBehaviour {
 
     public List<Transform> ballStartPositions;
     public List<GameObject> ballPrefabs;
+    public List<GameObject> jumperPrefabs;
 
     [SerializeField]
-    private List<GameObject> ballInstances;
+    private List<GameObject> ballInstances = new List<GameObject>();
 
     private Player menuPlayer;
 
-    public GameObject jumperPrefab;
+    
+
+    private List<GameObject> jumperInstances = new List<GameObject>();
 
     // Use this for initialization
     void Start () {
@@ -217,6 +220,17 @@ public class GameStateController : MonoBehaviour {
 
         ballInstances.Clear();
 
+        //prepare jumpers
+        foreach (GameObject jumper in jumperInstances)
+        {
+            if (jumper != null)
+            {
+                DestroyImmediate(jumper);
+            }
+        }
+
+        jumperInstances.Clear();
+
         playerColorManager.ClearBallColors(0);
         playerColorManager.ClearBallColors(1);
 
@@ -249,10 +263,10 @@ public class GameStateController : MonoBehaviour {
             GameObject ballInstance = Instantiate(ballPrefab, startPos, Quaternion.identity, transform.parent);
             ballInstances.Add(ballInstance);
 
-            GameObject jumperInstance = Instantiate(jumperPrefab, startPos, Quaternion.identity, ballInstance.transform);
+            GameObject jumperInstance = Instantiate(jumperPrefabs[i], ballInstance.transform);
             Jumper jumper = jumperInstance.GetComponent<Jumper>();
-            jumper.followColor = ballInstance.GetComponent<BallController>().color;
-            jumper.colorState = playerColorManager;
+            //jumper.followColor = ballInstance.GetComponent<BallController>().color;
+            //jumper.colorState = playerColorManager;
             jumper.players.Add(playerOneInstance.transform);
             jumper.players.Add(playerTwoInstance.transform);
             jumper.ball = ballInstance.transform;
