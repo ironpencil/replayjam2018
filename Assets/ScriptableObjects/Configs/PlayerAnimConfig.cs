@@ -9,6 +9,7 @@ public class PlayerAnimConfig : ScriptableObject {
     public string isIdleParam = "isIdle";
     public string isJumpingParam = "isJumping";
     public string doStunParam = "doStun";
+    public string didHit = "didHit";
 
     public float minRunMultiplier = 0.3f;
     public string runMultiplierParam = "runMultiplier";

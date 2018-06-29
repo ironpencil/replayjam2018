@@ -14,10 +14,10 @@ MonoBehaviour:
   playerStateChangedEvent: {fileID: 11400000, guid: 6c181be6a3e98dc42a470c3848198c01,
     type: 2}
   isAttacking: 0
-  isInvulnerable: 0
+  isInvulnerable: 1
   invulnerableTime: 3.4028235e+38
-  frozenTime: 1.0181999
-  stunTime: 94.3034
+  frozenTime: 218.35199
+  stunTime: 69.3703
   gravityScaleHold: 1
-  velocityHold: {x: 10.398943, y: 0.8613031}
+  velocityHold: {x: -6.8566236, y: 12.889801}
   value: 0

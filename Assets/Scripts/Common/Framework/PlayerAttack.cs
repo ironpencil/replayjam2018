@@ -104,9 +104,15 @@ public class PlayerAttack : MonoBehaviour
 
     void StopAttack()
     {
-		attackObject.SetActive(false);
-        vanishArmObject.SetActive(true);
+        StartCoroutine(CleanupAttack());
         state.StopAttack();
 		//Debug.Log("Hits: " + attackBehavior.hitCount);
+    }
+
+    public IEnumerator CleanupAttack()
+    {
+        yield return new WaitForSeconds(attackConfig.recovery * 1.0f);
+        attackObject.SetActive(false);
+        vanishArmObject.SetActive(true);
     }
 }

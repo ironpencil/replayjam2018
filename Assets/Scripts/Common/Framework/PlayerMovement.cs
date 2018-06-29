@@ -116,22 +116,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Freeze(float frozenTime)
     {
-        state.frozenTime = Time.time + frozenTime;
-        recoverState = state.GetState();
-        state.SetState(PlayerState.State.frozen);
-        state.velocityHold = rigidBody.velocity;
-        rigidBody.velocity = Vector2.zero;
-        state.gravityScaleHold = rigidBody.gravityScale;
-        rigidBody.gravityScale = 0;
-        // Need to increase timers by the freeze time
-        // so they continue as if nothing happened
-        startJumpTime += frozenTime;
-        state.invulnerableTime += frozenTime;
-
-        PlayerAttack pa = GetComponent<PlayerAttack>();
-        if (pa != null)
+        if (state.GetState() != PlayerState.State.frozen)
         {
-            pa.Freeze(frozenTime);
+            state.frozenTime = Time.time + frozenTime;
+            recoverState = state.GetState();
+            state.SetState(PlayerState.State.frozen);
+            state.velocityHold = rigidBody.velocity;
+            rigidBody.velocity = Vector2.zero;
+            state.gravityScaleHold = rigidBody.gravityScale;
+            rigidBody.gravityScale = 0;
+            // Need to increase timers by the freeze time
+            // so they continue as if nothing happened
+            startJumpTime += frozenTime;
+            state.invulnerableTime += frozenTime;
+
+            PlayerAttack pa = GetComponent<PlayerAttack>();
+            if (pa != null)
+            {
+                pa.Freeze(frozenTime);
+            }
         }
     }
 

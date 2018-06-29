@@ -53,7 +53,6 @@ public class AttackBehavior : MonoBehaviour {
 		BallController bc = collider.GetComponent<BallController>();
 		if (bc != null 
 		&& !hitList.Contains(collider)
-		&& !state.IsFrozen()
 		&& !state.IsStunned()) {
 			hitList.Add(collider);
 			playerData.AddBallColor(bc.color);
