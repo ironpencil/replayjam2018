@@ -155,6 +155,7 @@ MonoBehaviour:
   blackoutStartSounds: {fileID: 11400000, guid: c30a5151338285e4e8254d7d159e3ee7,
     type: 2}
   blackoutSource: {fileID: 82002420423910824}
+  timeScale: {fileID: 11400000, guid: ecd092373d7cb284ba919cadf3c67118, type: 2}
 --- !u!114 &114755586644939614
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -50,6 +50,8 @@ public class GameStateController : MonoBehaviour {
     public List<GameObject> ballPrefabs;
     public List<GameObject> jumperPrefabs;
 
+    public FloatVariable timeScale;
+
     [SerializeField]
     private List<GameObject> ballInstances = new List<GameObject>();
 
@@ -129,13 +131,18 @@ public class GameStateController : MonoBehaviour {
     private void OnPause()
     {
         gameManager.acceptGameInput = false;
+
         Time.timeScale = 0;
+        timeScale.Value = 0;
     }
 
     private void OnUnpause()
     {
         gameManager.acceptGameInput = true;
-        Time.timeScale = 1.0f;
+        // Hack, if you unpause during something that
+        // affects timescale 
+        Time.timeScale = 1;
+        timeScale.Value = 1;
     }
 
     private void HandlePauseState()

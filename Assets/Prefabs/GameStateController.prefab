@@ -360,6 +360,7 @@ MonoBehaviour:
   - {fileID: 1670247907251852, guid: 7c513a82f68afa540941fc992e440167, type: 2}
   - {fileID: 1461910506290800, guid: d00614a1f425819429b44668a1baf911, type: 2}
   - {fileID: 1482763315770568, guid: 0d282760aeb00c44aa023dd8b9a8a1cd, type: 2}
+  timeScale: {fileID: 11400000, guid: ecd092373d7cb284ba919cadf3c67118, type: 2}
   ballInstances:
   - {fileID: 0}
   - {fileID: 0}

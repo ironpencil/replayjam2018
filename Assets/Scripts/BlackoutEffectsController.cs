@@ -11,6 +11,7 @@ public class BlackoutEffectsController : MonoBehaviour {
 
     public AudioEvent blackoutStartSounds;
     public AudioSource blackoutSource;
+    public FloatVariable timeScale;
 
     public void OnBlackoutStart()
     {
@@ -40,7 +41,6 @@ public class BlackoutEffectsController : MonoBehaviour {
         blackoutForeground.gameObject.SetActive(true);
 
         Time.timeScale = 0.0f;
-
         
 
         yield return new WaitForSecondsRealtime(blackoutIntroTime * 0.5f);
@@ -60,6 +60,6 @@ public class BlackoutEffectsController : MonoBehaviour {
         blackoutFColor.a = 0.0f;
         blackoutForeground.color = blackoutFColor;
 
-        Time.timeScale = 1.0f;
+        Time.timeScale = timeScale.Value;
     }
 }
