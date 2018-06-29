@@ -367,7 +367,9 @@ MonoBehaviour:
   - {fileID: 0}
   confirmUIEvent: {fileID: 11400000, guid: 7d27282b1e7b9084d8b41fd7f4578ee8, type: 2}
   cancelUIEvent: {fileID: 11400000, guid: 2ca82e34461e0594cbe7a25aa80852f1, type: 2}
+  fightStartEvent: {fileID: 11400000, guid: 6043ca8915925f84fb534fe1e13c56d8, type: 2}
   uiAudioSource: {fileID: 82106340540590996}
+  jumperInstances: []
 --- !u!114 &114526535518040670
 MonoBehaviour:
   m_ObjectHideFlags: 1
