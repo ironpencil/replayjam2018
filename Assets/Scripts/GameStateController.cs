@@ -113,7 +113,7 @@ public class GameStateController : MonoBehaviour {
         gameManager.SetState(GameManager.GameState.Victory);
         roundEndEvent.Raise();
 
-        StartCoroutine(DisplayTitleAfterSeconds(GameManager.GameState.Victory, 2.0f));
+        StartCoroutine(DisplayTitleAfterSeconds(GameManager.GameState.Victory, 5.0f));
     }
 
     private IEnumerator DisplayTitleAfterSeconds(GameManager.GameState fromState, float numSeconds)

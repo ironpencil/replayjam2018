@@ -14,6 +14,7 @@ public class AttackBehavior : MonoBehaviour {
     public AudioSource hitAudioSource;
     public AudioEvent hitAudioEvent;
 	public AttackConfig attackConfig;
+    public BlackoutState blackoutState;
 
 	void Start()
 	{
@@ -48,21 +49,27 @@ public class AttackBehavior : MonoBehaviour {
 		hitList.Remove(collider);
 	}
 
-	void HandleHit(Collider2D collider)
-	{
-		BallController bc = collider.GetComponent<BallController>();
-		if (bc != null 
-		&& !hitList.Contains(collider)
-		&& !state.IsStunned()) {
-			hitList.Add(collider);
-			playerData.AddBallColor(bc.color);
-			bc.Hit(playerData.playerId, attackAngle);
-			bc.Freeze(attackConfig.hitFreezeLength);
-			playerMovement.Freeze(attackConfig.hitFreezeLength);
-			hitCount++;
-			PlayAudioEvent(hitAudioEvent, hitAudioSource);
-		}
-	}
+    void HandleHit(Collider2D collider)
+    {
+        if (blackoutState.InBlackout() && blackoutState.blackoutPlayer != playerData.playerId)
+        {
+            return;
+        }
+
+        BallController bc = collider.GetComponent<BallController>();
+        if (bc != null
+        && !hitList.Contains(collider)
+        && !state.IsStunned())
+        {
+            hitList.Add(collider);
+            playerData.AddBallColor(bc.color);
+            bc.Hit(playerData.playerId, attackAngle);
+            bc.Freeze(attackConfig.hitFreezeLength);
+            playerMovement.Freeze(attackConfig.hitFreezeLength);
+            hitCount++;
+            PlayAudioEvent(hitAudioEvent, hitAudioSource);
+        }
+    }
 
 	private void PlayAudioEvent(AudioEvent audioE, AudioSource audioS) {
         if (audioE != null && audioS != null) {

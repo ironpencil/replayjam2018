@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: d1aea631b4275504d85547ffede39313, type: 3}
-  - {fileID: 8300000, guid: 84a4e5e5477920145828709966c5ebd0, type: 3}
+  - {fileID: 8300000, guid: ece1a40d3c0d2c948aba6b539c189e63, type: 3}
   playRandom: 0
   minVolume: 1
   maxVolume: 1
