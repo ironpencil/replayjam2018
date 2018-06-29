@@ -421,7 +421,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4204186827508096}
   - component: {fileID: 212394660889044002}
-  - component: {fileID: 95616901455206706}
   m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
@@ -1184,24 +1183,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95616901455206706
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1928488537487808}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26e8a21cca1bdcd4b8fd5f8f6f57c3a6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95948142906406664
 Animator:
   serializedVersion: 3
@@ -1593,6 +1574,7 @@ MonoBehaviour:
   playerFacing: {fileID: 11400000, guid: b7867ca3221354e4b80ce041ad355621, type: 2}
   movementConfig: {fileID: 11400000, guid: 4f875ae86f2f51d4fbd918c8d87080fb, type: 2}
   playerAnimator: {fileID: 95529836424287128}
+  playerAttackAnimator: {fileID: 95948142906406664}
   animConfig: {fileID: 11400000, guid: 1e8887f649c052f4e85314995af1442d, type: 2}
   playerState: {fileID: 11400000, guid: 2b49a4c027b9cce4f945c947637a2df7, type: 2}
   defaultAnimController: {fileID: 22100000, guid: 6d42bc29353dd5e42a6255410d7aeed6,
@@ -15824,7 +15806,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -228275837
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

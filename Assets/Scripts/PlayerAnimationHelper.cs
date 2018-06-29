@@ -8,6 +8,7 @@ public class PlayerAnimationHelper : MonoBehaviour {
     public IntVariable playerFacing;
     public MovementConfig movementConfig;
     public Animator playerAnimator;
+    public Animator playerAttackAnimator;
     public PlayerAnimConfig animConfig;
     public PlayerState playerState;
     public RuntimeAnimatorController defaultAnimController;
@@ -62,7 +63,7 @@ public class PlayerAnimationHelper : MonoBehaviour {
                     playerAnimator.SetTrigger(animConfig.doStunParam);
                     break;
                 case PlayerState.State.frozen:
-                    // TODO not sure how to stop the animation
+                    playerAttackAnimator.SetBool(animConfig.didHit, true);
                     break;
                 default:
                     break;
