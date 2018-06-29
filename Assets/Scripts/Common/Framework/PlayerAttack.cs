@@ -111,7 +111,8 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator CleanupAttack()
     {
-        yield return new WaitForSeconds(attackConfig.recovery * 1.0f);
+        //yield return null;
+        yield return new WaitForSeconds(attackConfig.recovery * 0.75f);
         attackObject.SetActive(false);
         vanishArmObject.SetActive(true);
     }
