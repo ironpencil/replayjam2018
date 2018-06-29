@@ -54,6 +54,8 @@ public class GameStateController : MonoBehaviour {
 
     private Player menuPlayer;
 
+    public GameObject jumperPrefab;
+
     // Use this for initialization
     void Start () {
         OnPause();
@@ -246,6 +248,14 @@ public class GameStateController : MonoBehaviour {
             Vector3 startPos = ballStartPositions[i].position;
             GameObject ballInstance = Instantiate(ballPrefab, startPos, Quaternion.identity, transform.parent);
             ballInstances.Add(ballInstance);
+
+            GameObject jumperInstance = Instantiate(jumperPrefab, startPos, Quaternion.identity, ballInstance.transform);
+            Jumper jumper = jumperInstance.GetComponent<Jumper>();
+            jumper.followColor = ballInstance.GetComponent<BallController>().color;
+            jumper.colorState = playerColorManager;
+            jumper.players.Add(playerOneInstance.transform);
+            jumper.players.Add(playerTwoInstance.transform);
+            jumper.ball = ballInstance.transform;
         }
 
         prepareRoundEvent.Raise();
