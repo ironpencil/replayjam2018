@@ -55,7 +55,10 @@ public class GameStateController : MonoBehaviour {
 
     private Player menuPlayer;
 
-    
+    public AudioEvent confirmUIEvent;
+    public AudioEvent cancelUIEvent;
+
+    public AudioSource uiAudioSource;
 
     private List<GameObject> jumperInstances = new List<GameObject>();
 
@@ -139,6 +142,7 @@ public class GameStateController : MonoBehaviour {
     {
         if (menuPlayer.GetButtonDown("Start"))
         {
+            cancelUIEvent.Play(uiAudioSource);
             gameManager.SetState(GameManager.GameState.RoundActive);
             OnUnpause();
             unpauseEvent.Raise();
@@ -152,6 +156,7 @@ public class GameStateController : MonoBehaviour {
             Player player = ReInput.players.GetPlayer(i);
             if (player.GetButtonDown("Start"))
             {
+                confirmUIEvent.Play(uiAudioSource);
                 OnPause();
                 ClearRound();
                 PrepareRound();
@@ -168,6 +173,7 @@ public class GameStateController : MonoBehaviour {
             Player player = ReInput.players.GetPlayer(i);
             if (player.GetButtonDown("Start"))
             {
+                confirmUIEvent.Play(uiAudioSource);
                 gameManager.SetState(GameManager.GameState.Pause);
                 pauseEvent.Raise();
                 OnPause();
@@ -183,6 +189,7 @@ public class GameStateController : MonoBehaviour {
             Player player = ReInput.players.GetPlayer(i);
             if (player.GetButtonDown("Start"))
             {
+                confirmUIEvent.Play(uiAudioSource);
                 gameManager.SetState(GameManager.GameState.RoundActive);
                 OnUnpause();
                 roundStartEvent.Raise();

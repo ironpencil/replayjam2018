@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private bool jumping = false;
     private float startJumpTime = 0.0f;
     private float currentJumpForce = 0.0f;
-    private bool grounded = false;
+    private bool wasGrounded = true;
+    private bool isGrounded = true;
     private PhysicsMaterial2D originalMaterial;
     private Collider2D collider;
 
@@ -51,9 +52,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!state.IsFrozen()) {
-            grounded = IsGrounded();
+            isGrounded = IsGrounded();
 
-            if (grounded) {
+            if (isGrounded && !wasGrounded)
+            {
+                PlayAudioEvent(landAudioEvent, movementAudioSource);
+            }
+
+            wasGrounded = isGrounded;
+
+            if (isGrounded) {
                 jumpCount = 0;
             }
             
@@ -66,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpCount++;
             }
 
-            if (grounded && !beginJump && !jumping)
+            if (isGrounded && !beginJump && !jumping)
             {
                 //we're on the ground, we're not jumping, make sure our collision material is correct
                 if (collider.sharedMaterial != originalMaterial)
@@ -193,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
         if (velocityX < 0) facing.Value = -1;
         if (velocityX > 0) facing.Value = 1;
 
-        if (grounded && !jumping && !state.IsStunned())
+        if (isGrounded && !jumping && !state.IsStunned())
         {
             if (velocityX == 0)
             {
@@ -214,7 +222,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
             {
-                PlayAudioEvent(landAudioEvent, movementAudioSource);
                 return true;
             }
         }

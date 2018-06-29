@@ -9,6 +9,9 @@ public class BlackoutEffectsController : MonoBehaviour {
 
     public float blackoutIntroTime = 0.5f;
 
+    public AudioEvent blackoutStartSounds;
+    public AudioSource blackoutSource;
+
     public void OnBlackoutStart()
     {
         StartCoroutine(StartBlackout());
@@ -23,6 +26,8 @@ public class BlackoutEffectsController : MonoBehaviour {
 
     public IEnumerator StartBlackout()
     {
+        blackoutStartSounds.Play(blackoutSource);
+
         Color blackoutColor = blackoutBackground.color;
         blackoutColor.a = 1.0f;        
         blackoutBackground.color = blackoutColor;

@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 540c86dd4fd5b1e48aaf164352a070fa, type: 3}
-  m_Name: LandAE
+  m_Name: BlackoutStart
   m_EditorClassIdentifier: 
-  clips: []
-  playRandom: 1
-  minVolume: 0.15
-  maxVolume: 0.2
-  minPitch: 0.6
-  maxPitch: 0.8
+  clips:
+  - {fileID: 8300000, guid: d1aea631b4275504d85547ffede39313, type: 3}
+  - {fileID: 8300000, guid: 84a4e5e5477920145828709966c5ebd0, type: 3}
+  playRandom: 0
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 1
+  maxPitch: 1

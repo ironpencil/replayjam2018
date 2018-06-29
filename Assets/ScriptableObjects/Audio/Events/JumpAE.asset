@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: JumpAE
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: c3652d4c3041b1142a0522121cace0cc, type: 3}
-  minVolume: 1
-  maxVolume: 1
-  minPitch: 0.89
-  maxPitch: 1.11
+  - {fileID: 8300000, guid: 6a3aff773117ff94dbe4a8023f9ce19d, type: 3}
+  - {fileID: 8300000, guid: 6181de509c3e4e0429d1b56071663e9f, type: 3}
+  playRandom: 1
+  minVolume: 0.7
+  maxVolume: 0.8
+  minPitch: 1.1
+  maxPitch: 1.2

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: StunAE
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: b8aeef9593935cb409ba58b88b6585a2, type: 3}
-  minVolume: 1
-  maxVolume: 1
+  - {fileID: 8300000, guid: cda014162c62d444985abb9387301f7d, type: 3}
+  playRandom: 1
+  minVolume: 0.5
+  maxVolume: 0.7
   minPitch: 0.84
   maxPitch: 1.11
