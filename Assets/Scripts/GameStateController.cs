@@ -59,6 +59,7 @@ public class GameStateController : MonoBehaviour {
 
     public AudioEvent confirmUIEvent;
     public AudioEvent cancelUIEvent;
+    public AudioEvent fightStartEvent;
 
     public AudioSource uiAudioSource;
 
@@ -198,6 +199,7 @@ public class GameStateController : MonoBehaviour {
             if (player.GetButtonDown("Start"))
             {
                 confirmUIEvent.Play(uiAudioSource);
+                fightStartEvent.Play(uiAudioSource);
                 gameManager.SetState(GameManager.GameState.RoundActive);
                 OnUnpause();
                 roundStartEvent.Raise();
