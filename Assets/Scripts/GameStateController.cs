@@ -62,6 +62,7 @@ public class GameStateController : MonoBehaviour {
 
     public AudioSource uiAudioSource;
 
+    [SerializeField]
     private List<GameObject> jumperInstances = new List<GameObject>();
 
     // Use this for initialization
@@ -284,6 +285,8 @@ public class GameStateController : MonoBehaviour {
             jumper.players.Add(playerOneInstance.transform);
             jumper.players.Add(playerTwoInstance.transform);
             jumper.ball = ballInstance.transform;
+
+            jumperInstances.Add(jumperInstance);
         }
 
         prepareRoundEvent.Raise();

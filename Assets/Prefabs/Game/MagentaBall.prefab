@@ -114,6 +114,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1710763421582808
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4625716387625942}
+  - component: {fileID: 114887041094306672}
+  - component: {fileID: 114164640186777800}
+  - component: {fileID: 114480556199499932}
+  m_Layer: 10
+  m_Name: AuraParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1728550460406694
 GameObject:
   m_ObjectHideFlags: 1
@@ -194,8 +212,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4466452465874764}
+  - {fileID: 4625716387625942}
   m_Father: {fileID: 4940410080665736}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4625716387625942
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710763421582808}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4472512711940572}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4793886850675618
 Transform:
@@ -358,6 +390,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114164640186777800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710763421582808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 942de67a285afc14d83be7b2c46dc41b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114887041094306672}
+        m_MethodName: OnStartBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114422533487173764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,6 +435,34 @@ MonoBehaviour:
   _rotateAroundAxis: 2
   _relativeTo: 1
   _reverse: 0
+--- !u!114 &114480556199499932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710763421582808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667197115061a1c4aacef887fc06c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fc0a6da5b364844fb23e4c0d509ca53, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114887041094306672}
+        m_MethodName: OnEndBlackout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114670330584913300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90b8d41eef165f46b2ef7bb1eea776f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnitude: 0.2
+  magnitude: 0.1
   sustainTime: 0
   decayTime: 0.1
   shakeOnStart: 0
@@ -463,6 +551,27 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114887041094306672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710763421582808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561d610304fced478a6a8db39b9afc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 1311131212745596, guid: f2bed5d653f9f2541887d55b2ae7ec96,
+    type: 2}
+  tintedConfig: {fileID: 11400000, guid: d3b8fadfbf43b8540aafcad78631704e, type: 2}
+  whiteConfig: {fileID: 0}
+  defaultEmissionConfig: {fileID: 11400000, guid: 8a1294dd85c85fc4bb3ff6d54820aad2,
+    type: 2}
+  blackoutEmissionConfig: {fileID: 11400000, guid: 999e88ea4e34554438c659f965cd0bde,
+    type: 2}
+  playOnAwake: 1
+  shouldPlay: 0
 --- !u!114 &114959160409061808
 MonoBehaviour:
   m_ObjectHideFlags: 1

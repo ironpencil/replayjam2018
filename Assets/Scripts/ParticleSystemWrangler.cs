@@ -26,10 +26,17 @@ public class ParticleSystemWrangler : MonoBehaviour {
 
     private void Awake()
     {
-        randomSeed = (uint) Random.Range(0, uint.MaxValue);
+        randomSeed = (uint)Random.Range(0, uint.MaxValue);
 
-        tintedParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
-        whiteParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
+        if (tintedConfig != null)
+        {
+            tintedParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
+        }
+
+        if (whiteConfig != null)
+        {
+            whiteParticles = Instantiate(particleSystemPrefab, transform).GetComponent<ParticleSystem>();
+        }
 
         emissionConfig = defaultEmissionConfig;
 
@@ -110,20 +117,27 @@ public class ParticleSystemWrangler : MonoBehaviour {
     public void Stop()
     {
         shouldPlay = false;
-        tintedParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-        whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        if (tintedParticles != null)
+        {
+            tintedParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        }
+
+        if (whiteParticles != null)
+        {
+            whiteParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        }
     }
 
     [ContextMenu("Play")]
     public void Play()
     {
         shouldPlay = true;
-        if (!tintedParticles.isPlaying)
+        if (tintedParticles != null && !tintedParticles.isPlaying)
         {
             tintedParticles.Play();
         }
 
-        if (!whiteParticles.isPlaying)
+        if (whiteParticles != null && !whiteParticles.isPlaying)
         {
             whiteParticles.Play();
         }
