@@ -16,6 +16,8 @@ public class BallController : MonoBehaviour {
     public AudioEvent ballHitWall;
     public AudioSource ballAudioSource;
 
+    public GameEvent ballHitEvent;
+
     private Rigidbody2D rb;
 	// Use this for initialization
 	void Awake () {
@@ -89,6 +91,8 @@ public class BallController : MonoBehaviour {
             currentSpeed = ballConfig.minHitSpeed;
         }
         rb.velocity = direction.normalized * currentSpeed;
+
+        ballHitEvent.Raise();
         //rb.AddForce(direction.normalized * currentSpeed, ForceMode2D.Impulse);
     }
 
