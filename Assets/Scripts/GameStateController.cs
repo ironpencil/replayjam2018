@@ -92,7 +92,7 @@ public class GameStateController : MonoBehaviour {
     public void PlayerOneWins()
     {
         playerOneState.SetInvulnerable(true);
-        DisplayVictory("SKULL");
+        DisplayVictory("SKULLKID");
     }
 
     public void PlayerTwoWins()
