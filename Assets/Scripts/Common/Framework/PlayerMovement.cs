@@ -116,22 +116,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Freeze(float frozenTime)
     {
-        state.frozenTime = Time.time + frozenTime;
-        recoverState = state.GetState();
-        state.SetState(PlayerState.State.frozen);
-        state.velocityHold = rigidBody.velocity;
-        rigidBody.velocity = Vector2.zero;
-        state.gravityScaleHold = rigidBody.gravityScale;
-        rigidBody.gravityScale = 0;
-        // Need to increase timers by the freeze time
-        // so they continue as if nothing happened
-        startJumpTime += frozenTime;
-        state.invulnerableTime += frozenTime;
-
-        PlayerAttack pa = GetComponent<PlayerAttack>();
-        if (pa != null)
+        if (state.GetState() != PlayerState.State.frozen)
         {
-            pa.Freeze(frozenTime);
+            state.frozenTime = Time.time + frozenTime;
+            recoverState = state.GetState();
+            state.SetState(PlayerState.State.frozen);
+            state.velocityHold = rigidBody.velocity;
+            rigidBody.velocity = Vector2.zero;
+            state.gravityScaleHold = rigidBody.gravityScale;
+            rigidBody.gravityScale = 0;
+            // Need to increase timers by the freeze time
+            // so they continue as if nothing happened
+            startJumpTime += frozenTime;
+            state.invulnerableTime += frozenTime;
+
+            PlayerAttack pa = GetComponent<PlayerAttack>();
+            if (pa != null)
+            {
+                pa.Freeze(frozenTime);
+            }
         }
     }
 
@@ -248,7 +251,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator FlashSpriteForDuration(float duration, float frequency)
     {
-        List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>().ToList();
+        List<SpriteRenderer> sprites = GetComponentsInChildren<SpriteRenderer>(true).ToList();
         List<Color> colors = sprites.Select(s => s.color).ToList();
 
         Color flashColor = Color.clear;
