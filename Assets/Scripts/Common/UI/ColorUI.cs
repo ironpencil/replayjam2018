@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ColorUI : MonoBehaviour {
 	public List<BallColor> colors;
-	public List<GameObject> uiEls;
+	public List<GameObject> offUiEls;
+	public List<GameObject> onUiEls;
 
-	private Dictionary<BallColor, GameObject> colorDict;
+	private Dictionary<BallColor, GameObject> colorOnDict;
+	private Dictionary<BallColor, GameObject> colorOffDict;
 	public PlayerColorState pcs;
 
     public int playerNum;
 
 	void Start() {
-		colorDict = new Dictionary<BallColor, GameObject>();
+		colorOnDict = new Dictionary<BallColor, GameObject>();
+		colorOffDict = new Dictionary<BallColor, GameObject>();
 		int i = 0;
 		foreach(BallColor color in colors) {
-			colorDict.Add(color, uiEls[i++]);
+			colorOnDict.Add(color, onUiEls[i]);
+			colorOffDict.Add(color, offUiEls[i++]);
 		}
 		UpdateColorUI();
 	}
@@ -25,13 +29,16 @@ public class ColorUI : MonoBehaviour {
 
 		foreach (BallColor bc in pcs.GetPlayerCollection(playerNum).ballColors)
 		{
-			colorDict[bc].SetActive(true);
+			colorOnDict[bc].SetActive(true);
+			colorOffDict[bc].SetActive(false);
 		}
 	}
 
 	public void DisableAll() {
-		foreach(GameObject el in uiEls) {
-			el.SetActive(false);
+		for (int i = 0; i < offUiEls.Count; i++)
+		{
+			onUiEls[i].SetActive(false);
+			offUiEls[i].SetActive(true);
 		}
 	}
 }
