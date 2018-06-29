@@ -69,6 +69,15 @@ public class AttackBehavior : MonoBehaviour {
             hitCount++;
             PlayAudioEvent(hitAudioEvent, hitAudioSource);
         }
+
+        PVPController pvpc = collider.GetComponent<PVPController>();
+        if (pvpc != null
+        && !hitList.Contains(collider))
+        {
+            pvpc.Hit(playerData.playerId);
+            hitList.Add(collider);
+            hitCount++;
+        }
     }
 
 	private void PlayAudioEvent(AudioEvent audioE, AudioSource audioS) {
