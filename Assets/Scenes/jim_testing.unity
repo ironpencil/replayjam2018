@@ -3617,6 +3617,12 @@ Prefab:
       propertyPath: ballInstances.Array.data[2]
       value: 
       objectReference: {fileID: 1281118835}
+    - target: {fileID: 114251009529057230, guid: 9481eb16107feeb468f52d4c83d31284,
+        type: 2}
+      propertyPath: jumperPrefab
+      value: 
+      objectReference: {fileID: 1995517960147198, guid: 4a2d4e1be91e5ec44933e001e5694438,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9481eb16107feeb468f52d4c83d31284, type: 2}
   m_IsPrefabParent: 0
