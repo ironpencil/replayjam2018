@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 50438372846283582}
   - component: {fileID: 114528858463706734}
   - component: {fileID: 82734415045482060}
+  - component: {fileID: 114458061755286060}
   m_Layer: 10
   m_Name: YellowBall
   m_TagString: Untagged
@@ -434,6 +435,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114458061755286060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210467830307306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90b8d41eef165f46b2ef7bb1eea776f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.2
+  sustainTime: 0
+  decayTime: 0.1
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 17664
+  shake: {fileID: 0}
 --- !u!114 &114458209354715676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,6 +490,7 @@ MonoBehaviour:
   frozenTime: 0
   ballHitWall: {fileID: 11400000, guid: 52d2bddecc4cc134b902cd0bd521d015, type: 2}
   ballAudioSource: {fileID: 82734415045482060}
+  ballHitEvent: {fileID: 11400000, guid: 2ade2e7d23aee964894ec5b82c6740c0, type: 2}
 --- !u!198 &198648090746200562
 ParticleSystem:
   m_ObjectHideFlags: 1

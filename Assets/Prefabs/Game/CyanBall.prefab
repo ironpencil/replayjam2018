@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50803033560632868}
   - component: {fileID: 114370671838800742}
   - component: {fileID: 82105397039943478}
+  - component: {fileID: 114469965011903162}
   m_Layer: 10
   m_Name: CyanBall
   m_TagString: Untagged
@@ -375,6 +376,7 @@ MonoBehaviour:
   frozenTime: 0
   ballHitWall: {fileID: 11400000, guid: 52d2bddecc4cc134b902cd0bd521d015, type: 2}
   ballAudioSource: {fileID: 82105397039943478}
+  ballHitEvent: {fileID: 11400000, guid: 2ade2e7d23aee964894ec5b82c6740c0, type: 2}
 --- !u!114 &114451423856860274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,6 +405,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114469965011903162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000416753938000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90b8d41eef165f46b2ef7bb1eea776f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.2
+  sustainTime: 0
+  decayTime: 0.1
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 17664
+  shake: {fileID: 0}
 --- !u!114 &114527799707972914
 MonoBehaviour:
   m_ObjectHideFlags: 1
