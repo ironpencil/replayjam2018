@@ -56,6 +56,7 @@ MonoBehaviour:
   blackoutBackground: {fileID: 0}
   blackoutForeground: {fileID: 0}
   blackoutIntroTime: 1.5
+  timeScale: {fileID: 11400000, guid: ecd092373d7cb284ba919cadf3c67118, type: 2}
 --- !u!114 &114755586644939614
 MonoBehaviour:
   m_ObjectHideFlags: 1
