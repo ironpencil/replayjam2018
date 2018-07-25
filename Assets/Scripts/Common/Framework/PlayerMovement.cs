@@ -52,19 +52,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!state.IsFrozen()) {
+
             isGrounded = IsGrounded();
 
             if (isGrounded && !wasGrounded)
             {
                 PlayAudioEvent(landAudioEvent, movementAudioSource);
+                if (isGrounded)
+                {
+                    jumpCount = 0;
+                }
             }
 
             wasGrounded = isGrounded;
 
-            if (isGrounded) {
-                jumpCount = 0;
-            }
-            
             // If the jump button is pressed and the player is grounded then the player should jump.
             if (gameState.acceptGameInput && rwPlayer.GetButtonDown("Jump")
             && jumpCount < movementConfigs.maxJumps
